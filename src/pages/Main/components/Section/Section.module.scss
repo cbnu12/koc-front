@@ -1,0 +1,97 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+
+  &:last-of-type{
+    margin-bottom: 200px;
+  }
+}
+
+.title{
+  font-size: 20px;
+  font-weight: 900;
+  color: white;
+}
+
+.description{
+  font-size: 16px;
+  font-weight: 300;
+  color: white;
+}
+
+.boxContainer{
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  padding: 20px 40px;
+  margin-left: -40px;
+  overflow: scroll hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  } 
+
+  &.row{
+    flex-direction: row;
+  }
+
+  &.column{
+    flex-direction: column;
+  }
+}
+
+.box{
+  background-color: white;
+  border-radius: 10px;
+  padding: 24px;
+  width: 230px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 3px 3px 8px rgba(27, 27, 27, 0.4);
+
+  &.row{
+    width: 230px;
+  }
+
+  &.column{
+    width: calc(100% - 60px);
+    padding: 30px;
+
+    & *{
+      text-align: center;
+    }
+  }
+}
+
+.name{
+  font-size: 18px;
+  font-weight: 900;
+  color: rgb(80, 80, 80);
+}
+
+.address{
+  font-size: 16px;
+  font-weight: 900;
+  color: rgb(141, 141, 141);
+}
+
+.character{
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom: 6px;
+
+  &:last-of-type{
+    margin: 0;
+  }
+}
+
+.recommend{
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(216, 50, 0);
+}
