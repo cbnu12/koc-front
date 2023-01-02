@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 declare global {
   interface Window {
@@ -13,44 +13,55 @@ type Props = {
   width?: string;
   height?: string;
   level?: number;
-  marker?: { lat: number; lng: number };
+  markerList?: { lat: number; lng: number; content: string }[];
 };
 
 const MapView = ({
-  lat = 37.365264512305174,
-  lng = 127.10676860117488,
+  lat = 37.402056,
+  lng = 127.108212,
   width = "100vw",
   height = "100vh",
   level = 3,
-  marker,
+  markerList,
 }: Props) => {
+  const mapRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
-    const container = document.getElementById("map") as HTMLElement;
-    const options = {
-      center: new kakao.maps.LatLng(lat, lng),
-      level,
-    };
-    const map = new kakao.maps.Map(container, options);
+    if (mapRef.current) {
+      const options = {
+        center: new kakao.maps.LatLng(lat, lng),
+        level,
+      };
+      const map = new kakao.maps.Map(mapRef.current, options);
 
-    const markerPoint = new kakao.maps.Marker({
-      position: map.getCenter(),
-    });
+      const markerPoint = new kakao.maps.Marker({
+        position: map.getCenter(),
+      });
 
-    if (marker) {
-      const check = new kakao.maps.LatLng(marker.lat, marker.lng);
-      markerPoint.setPosition(check);
-    } else {
-      markerPoint.setMap(map);
+      if (markerList) {
+        markerList.forEach((marker) => {
+          const customOverlay = new kakao.maps.CustomOverlay({
+            map,
+            position: new kakao.maps.LatLng(marker.lat, marker.lng),
+            content: marker.content,
+            yAnchor: 0,
+          });
+
+          customOverlay.setMap(map);
+        });
+      } else {
+        markerPoint.setMap(map);
+      }
+
+      kakao.maps.event.addListener(map, "click", (e: any) => {
+        var latlng = e.latLng;
+
+        markerPoint.setPosition(latlng);
+      });
     }
-
-    kakao.maps.event.addListener(map, "click", (e: any) => {
-      var latlng = e.latLng;
-
-      markerPoint.setPosition(latlng);
-    });
   }, []);
 
-  return <div id="map" style={{ width, height }}></div>;
+  return <div id="map" style={{ width, height }} ref={mapRef}></div>;
 };
 
 export default MapView;

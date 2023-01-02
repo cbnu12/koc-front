@@ -1,0 +1,22 @@
+.marker{
+  position: relative;
+  background-color: white;
+  bottom: 70px;
+  font-weight: 900;
+  font-size: 20px;
+  color: rgb(209, 131, 13);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 8px rgb(209, 131, 13);
+}
+
+.marker::after{
+  content: '';
+  position: absolute;
+  margin-left: -12px;
+  left: 50%;
+  bottom: -12px;
+  width: 20px;
+  height: 12px;
+  background: url("https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png")
+}
