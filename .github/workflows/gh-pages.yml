@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - develop
-      - feature/workflow
 
 jobs:
   deploy:
@@ -23,7 +22,6 @@ jobs:
         
       - name: Install packages
         run: yarn install
-        
 
       - name: Build Project
         run: yarn run build
