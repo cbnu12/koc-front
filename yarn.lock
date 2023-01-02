@@ -12647,6 +12647,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"kakao.maps.d.ts@npm:^0.1.33":
+  version: 0.1.33
+  resolution: "kakao.maps.d.ts@npm:0.1.33"
+  checksum: 50908b7ff8324530744625669eea01695e2137230fc9ffea300506cc995c7a1c011b8a3d3cad0c982b5a23ccab24417984ad9ccc228da9f9841c5c42e937e200
+  languageName: node
+  linkType: hard
+
 "kind-of@npm:^3.0.2, kind-of@npm:^3.0.3, kind-of@npm:^3.2.0":
   version: 3.2.2
   resolution: "kind-of@npm:3.2.2"
@@ -16091,6 +16098,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-kakao-maps-sdk@npm:^1.1.5":
+  version: 1.1.5
+  resolution: "react-kakao-maps-sdk@npm:1.1.5"
+  dependencies:
+    kakao.maps.d.ts: ^0.1.33
+  peerDependencies:
+    react: ">=16.9.0"
+    react-dom: ">=16.9.0"
+  checksum: 582e0b66b1afcd39d43321b5e9bcacf5a463e9d7bb5d46b9d069828835bf7ea28107bd6f45fc44283f4a995f3e0ca36f67906c1817c0e3ef18a7f434a56e81f8
+  languageName: node
+  linkType: hard
+
 "react-merge-refs@npm:^1.0.0":
   version: 1.1.0
   resolution: "react-merge-refs@npm:1.1.0"
@@ -18295,6 +18314,7 @@ __metadata:
     prop-types: ^15.8.1
     react: ^18.2.0
     react-dom: ^18.2.0
+    react-kakao-maps-sdk: ^1.1.5
     react-router-dom: ^6.6.1
     react-scripts: 5.0.1
     typescript: ^4.9.4
