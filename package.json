@@ -81,5 +81,6 @@
     "react-icons": "^4.7.1",
     "webpack": "^5.75.0"
   },
-  "packageManager": "yarn@3.3.1"
+  "packageManager": "yarn@3.3.1",
+  "homepage": "https://cbnu12.github.io/koc-front/"
 }
