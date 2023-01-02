@@ -82,6 +82,5 @@
       "prettier"
     ]
   },
-  "homepage": "https://thenewestworld.github.io/boilerplate-front/",
   "packageManager": "yarn@3.3.1"
 }
