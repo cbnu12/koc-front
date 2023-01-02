@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/koc-front/static/css/main.4a27c37a.css",
+    "main.css": "/koc-front/static/css/main.a9a2fdf0.css",
     "main.js": "/koc-front/static/js/main.460f77ef.js",
     "static/js/589.84000298.chunk.js": "/koc-front/static/js/589.84000298.chunk.js",
     "static/media/NanumSquareRoundR.ttf": "/koc-front/static/media/NanumSquareRoundR.f062cb52be3e9829834c.ttf",
@@ -12,12 +12,12 @@
     "static/media/NanumSquareRoundOTFEB.otf": "/koc-front/static/media/NanumSquareRoundOTFEB.733974e155ee3bc2e024.otf",
     "static/media/NanumSquareRoundOTFL.otf": "/koc-front/static/media/NanumSquareRoundOTFL.01252d794628d0c48d33.otf",
     "index.html": "/koc-front/index.html",
-    "main.4a27c37a.css.map": "/koc-front/static/css/main.4a27c37a.css.map",
+    "main.a9a2fdf0.css.map": "/koc-front/static/css/main.a9a2fdf0.css.map",
     "main.460f77ef.js.map": "/koc-front/static/js/main.460f77ef.js.map",
     "589.84000298.chunk.js.map": "/koc-front/static/js/589.84000298.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4a27c37a.css",
+    "static/css/main.a9a2fdf0.css",
     "static/js/main.460f77ef.js"
   ]
 }
