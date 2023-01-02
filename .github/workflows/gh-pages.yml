@@ -18,9 +18,12 @@ jobs:
           node-version: '16.x'
           cache: npm
 
-      - name: Install packages
+      - name: Install yarn
         run: npm install -g yarn
+        
+      - name: Install packages
         run: yarn i
+        
 
       - name: Build Project
         run: yarn run build
