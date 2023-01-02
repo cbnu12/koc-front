@@ -1,5 +1,5 @@
 export const PageRouts = {
-  main: "/main",
+  main: "/",
   theme: "/theme/:theme",
   map: "/map",
 };
