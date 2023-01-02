@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 declare global {
   interface Window {
@@ -24,37 +24,44 @@ const MapView = ({
   level = 3,
   markerList,
 }: Props) => {
+  const mapRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
-    const container = document.getElementById("map") as HTMLElement;
-    const options = {
-      center: new kakao.maps.LatLng(lat, lng),
-      level,
-    };
-    const map = new kakao.maps.Map(container, options);
+    if (mapRef.current) {
+      const options = {
+        center: new kakao.maps.LatLng(lat, lng),
+        level,
+      };
+      const map = new kakao.maps.Map(mapRef.current, options);
 
-    const markerPoint = new kakao.maps.Marker({
-      position: map.getCenter(),
-    });
+      const markerPoint = new kakao.maps.Marker({
+        position: map.getCenter(),
+      });
 
-    markerList
-      ? markerList.forEach((marker) => {
-          new kakao.maps.CustomOverlay({
+      if (markerList) {
+        markerList.forEach((marker) => {
+          const customOverlay = new kakao.maps.CustomOverlay({
             map,
             position: new kakao.maps.LatLng(marker.lat, marker.lng),
             content: marker.content,
             yAnchor: 0,
           });
-        })
-      : markerPoint.setMap(map);
 
-    kakao.maps.event.addListener(map, "click", (e: any) => {
-      var latlng = e.latLng;
+          customOverlay.setMap(map);
+        });
+      } else {
+        markerPoint.setMap(map);
+      }
 
-      markerPoint.setPosition(latlng);
-    });
+      kakao.maps.event.addListener(map, "click", (e: any) => {
+        var latlng = e.latLng;
+
+        markerPoint.setPosition(latlng);
+      });
+    }
   }, []);
 
-  return <div id="map" style={{ width, height }}></div>;
+  return <div id="map" style={{ width, height }} ref={mapRef}></div>;
 };
 
 export default MapView;
