@@ -24,7 +24,18 @@
   "eslintConfig": {
     "extends": [
       "react-app",
+      "react-app/jest",
       "prettier"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
     ]
   },
   "browserslist": {
