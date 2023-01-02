@@ -1,16 +1,15 @@
-# groove-front
-boilterplate-front
+# koc-front
 
 ### PJT 실행 방법
 ```
-npm i
-npm run start
+yarn i
+yarn start
 ```
 
 ### PJT 스토리북 실행 방법
 ```
-npm i
-npm run storybook
+yarn i
+yarn storybook
 ```
 
 ### 설치 환경
