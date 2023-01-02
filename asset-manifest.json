@@ -1,16 +1,23 @@
 {
   "files": {
-    "main.css": "/koc-front/static/css/main.073c9b0a.css",
-    "main.js": "/koc-front/static/js/main.48fa6243.js",
+    "main.css": "/koc-front/static/css/main.8b9aed77.css",
+    "main.js": "/koc-front/static/js/main.c1f9a3d4.js",
     "static/js/589.84000298.chunk.js": "/koc-front/static/js/589.84000298.chunk.js",
-    "static/media/logo.svg": "/koc-front/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/NanumSquareRoundR.ttf": "/koc-front/static/media/NanumSquareRoundR.f062cb52be3e9829834c.ttf",
+    "static/media/NanumSquareRoundB.ttf": "/koc-front/static/media/NanumSquareRoundB.8ab117fc37409bd022e5.ttf",
+    "static/media/NanumSquareRoundEB.ttf": "/koc-front/static/media/NanumSquareRoundEB.ef4043133d5b2d0febb4.ttf",
+    "static/media/NanumSquareRoundL.ttf": "/koc-front/static/media/NanumSquareRoundL.34b53f3711c695552994.ttf",
+    "static/media/NanumSquareRoundOTFB.otf": "/koc-front/static/media/NanumSquareRoundOTFB.6fefd146392a302e82b5.otf",
+    "static/media/NanumSquareRoundOTFR.otf": "/koc-front/static/media/NanumSquareRoundOTFR.7c5a6c969e22084ac097.otf",
+    "static/media/NanumSquareRoundOTFEB.otf": "/koc-front/static/media/NanumSquareRoundOTFEB.733974e155ee3bc2e024.otf",
+    "static/media/NanumSquareRoundOTFL.otf": "/koc-front/static/media/NanumSquareRoundOTFL.01252d794628d0c48d33.otf",
     "index.html": "/koc-front/index.html",
-    "main.073c9b0a.css.map": "/koc-front/static/css/main.073c9b0a.css.map",
-    "main.48fa6243.js.map": "/koc-front/static/js/main.48fa6243.js.map",
+    "main.8b9aed77.css.map": "/koc-front/static/css/main.8b9aed77.css.map",
+    "main.c1f9a3d4.js.map": "/koc-front/static/js/main.c1f9a3d4.js.map",
     "589.84000298.chunk.js.map": "/koc-front/static/js/589.84000298.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.48fa6243.js"
+    "static/css/main.8b9aed77.css",
+    "static/js/main.c1f9a3d4.js"
   ]
 }
