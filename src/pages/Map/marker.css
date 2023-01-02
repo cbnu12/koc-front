@@ -1,11 +1,11 @@
 .marker{
   position: relative;
   background-color: white;
-  bottom: 70px;
+  bottom: 60px;
   font-weight: 900;
-  font-size: 20px;
+  font-size: 16px;
   color: rgb(209, 131, 13);
-  padding: 15px;
+  padding: 12px;
   border-radius: 10px;
   box-shadow: 3px 3px 8px rgb(209, 131, 13);
 }
