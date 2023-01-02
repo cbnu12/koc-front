@@ -13,16 +13,16 @@ type Props = {
   width?: string;
   height?: string;
   level?: number;
-  marker?: { lat: number; lng: number };
+  markerList?: { lat: number; lng: number; content: string }[];
 };
 
 const MapView = ({
-  lat = 37.365264512305174,
-  lng = 127.10676860117488,
+  lat = 37.402056,
+  lng = 127.108212,
   width = "100vw",
   height = "100vh",
   level = 3,
-  marker,
+  markerList,
 }: Props) => {
   useEffect(() => {
     const container = document.getElementById("map") as HTMLElement;
@@ -36,12 +36,16 @@ const MapView = ({
       position: map.getCenter(),
     });
 
-    if (marker) {
-      const check = new kakao.maps.LatLng(marker.lat, marker.lng);
-      markerPoint.setPosition(check);
-    } else {
-      markerPoint.setMap(map);
-    }
+    markerList
+      ? markerList.forEach((marker) => {
+          new kakao.maps.CustomOverlay({
+            map,
+            position: new kakao.maps.LatLng(marker.lat, marker.lng),
+            content: marker.content,
+            yAnchor: 0,
+          });
+        })
+      : markerPoint.setMap(map);
 
     kakao.maps.event.addListener(map, "click", (e: any) => {
       var latlng = e.latLng;
