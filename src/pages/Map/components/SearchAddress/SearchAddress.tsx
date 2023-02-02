@@ -21,6 +21,7 @@ type Place = {
 type Pagination = {};
 
 type Props = {
+  queryKeyword?: string;
   setPosition: (
     position: {
       lat: number;
@@ -32,10 +33,21 @@ type Props = {
   onClose: () => void;
 };
 
-const SearchAddress = ({ setPosition, setMapCenter, onClose }: Props) => {
-  const [keyword, setKeyword] = useState<string>("");
+const SearchAddress = ({
+  queryKeyword,
+  setPosition,
+  setMapCenter,
+  onClose,
+}: Props) => {
+  const [keyword, setKeyword] = useState<string>(queryKeyword ?? "");
   const [results, setResults] = useState<Place[]>([]);
   const ps = new kakao.maps.services.Places();
+
+  useEffect(() => {
+    if (queryKeyword) {
+      ps.keywordSearch(keyword, placesSearchCB);
+    }
+  }, []);
 
   const placesSearchCB = (
     data: Place[],

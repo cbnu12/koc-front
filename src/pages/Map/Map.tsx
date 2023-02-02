@@ -3,8 +3,9 @@ import SearchAddress from "./components/SearchAddress";
 import MapView from "./Map.view";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { MdGpsFixed } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { BiSearchAlt } from "react-icons/bi";
+import queryString from "query-string";
 
 import styles from "./Map.module.scss";
 import classnames from "classnames/bind";
@@ -13,12 +14,15 @@ import "./marker.css";
 const cx = classnames.bind(styles);
 
 const Map = () => {
+  const { search } = useLocation();
+  const { keyword } = queryString.parse(search);
+
   const [mapCenter, setMapCenter] = useState<{ lat: number; lng: number }>();
   const [markerList, setMarkerList] = useState<
     { lat: number; lng: number; content: string }[]
   >([]);
   const navigate = useNavigate();
-  const [showSearch, setShowSearch] = useState<boolean>(false);
+  const [showSearch, setShowSearch] = useState<boolean>(!!keyword);
 
   return (
     <>
@@ -40,6 +44,7 @@ const Map = () => {
           setMapCenter={setMapCenter}
           setPosition={setMarkerList}
           onClose={() => setShowSearch(false)}
+          queryKeyword={keyword as string}
         />
       )}
       <MapView {...mapCenter} markerList={markerList} />
