@@ -20,8 +20,12 @@ const markerList = [
   },
 ];
 
+
 const Map = () => {
-  const [position, setPosition] = useState<{ lat: number; lng: number }>();
+  const [mapCenter, setMapCenter] = useState<{ lat: number; lng: number }>();
+  const [markerList, setMarkerList] = useState<
+    { lat: number; lng: number; content: string }[]
+  >([]);
   const navigate = useNavigate();
   const [showSearch, setShowSearch] = useState<boolean>(false);
 
@@ -42,11 +46,12 @@ const Map = () => {
       </header>
       {showSearch && (
         <SearchAddress
-          setPosition={setPosition}
+          setMapCenter={setMapCenter}
+          setPosition={setMarkerList}
           onClose={() => setShowSearch(false)}
         />
       )}
-      <MapView {...position} markerList={markerList} />
+      <MapView {...mapCenter} markerList={markerList} />
     </>
   );
 };
