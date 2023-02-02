@@ -5,6 +5,7 @@ import Section from "./components/Section";
 
 import styles from "./Main.module.scss";
 import classnames from "classnames/bind";
+import Search from "../../components/Search";
 
 const cx = classnames.bind(styles);
 
@@ -37,10 +38,7 @@ const MainView = ({}: Props) => {
   return (
     <div className={cx("container")}>
       <section className={cx("section")}>
-        <div className={cx("searchContainer")}>
-          <input placeholder="지도를 검색해보세요" />
-          <BiSearchAlt className={cx("icon")} />
-        </div>
+        <Search />
         <button onClick={() => navigate("/map")} className={cx("button")}>
           <div>
             <RiRoadMapFill className={cx("icon")} />내 주변 장소 찾기
