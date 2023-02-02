@@ -13,7 +13,7 @@ type Props = {
   width?: string;
   height?: string;
   level?: number;
-  markerList?: { lat: number; lng: number; content: string }[];
+  markerList: { lat: number; lng: number; content: string }[];
 };
 
 const MapView = ({
@@ -59,7 +59,7 @@ const MapView = ({
         markerPoint.setPosition(latlng);
       });
     }
-  }, []);
+  }, [markerList]);
 
   return <div id="map" style={{ width, height }} ref={mapRef}></div>;
 };

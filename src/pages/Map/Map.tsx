@@ -1,9 +1,10 @@
 import { useState } from "react";
-import Search from "./components/Search";
+import SearchAddress from "./components/SearchAddress";
 import MapView from "./Map.view";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { MdGpsFixed } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { BiSearchAlt } from "react-icons/bi";
 
 import styles from "./Map.module.scss";
 import classnames from "classnames/bind";
@@ -19,9 +20,14 @@ const markerList = [
   },
 ];
 
+
 const Map = () => {
-  const [position, setPosition] = useState<{ lat: number; lng: number }>();
+  const [mapCenter, setMapCenter] = useState<{ lat: number; lng: number }>();
+  const [markerList, setMarkerList] = useState<
+    { lat: number; lng: number; content: string }[]
+  >([]);
   const navigate = useNavigate();
+  const [showSearch, setShowSearch] = useState<boolean>(false);
 
   return (
     <>
@@ -32,9 +38,20 @@ const Map = () => {
         />
         <div className={cx("divider")} />
         <MdGpsFixed className={cx("button")} onClick={() => navigate(0)} />
+        <div className={cx("divider")} />
+        <BiSearchAlt
+          className={cx("button")}
+          onClick={() => setShowSearch(!showSearch)}
+        />
       </header>
-      <Search setPosition={setPosition} />
-      <MapView {...position} markerList={markerList} />
+      {showSearch && (
+        <SearchAddress
+          setMapCenter={setMapCenter}
+          setPosition={setMarkerList}
+          onClose={() => setShowSearch(false)}
+        />
+      )}
+      <MapView {...mapCenter} markerList={markerList} />
     </>
   );
 };
