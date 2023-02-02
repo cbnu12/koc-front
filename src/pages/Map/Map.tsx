@@ -12,15 +12,6 @@ import "./marker.css";
 
 const cx = classnames.bind(styles);
 
-const markerList = [
-  {
-    lat: 37.402056,
-    lng: 127.108212,
-    content: `<div class="marker">장소 이름</div>`,
-  },
-];
-
-
 const Map = () => {
   const [mapCenter, setMapCenter] = useState<{ lat: number; lng: number }>();
   const [markerList, setMarkerList] = useState<
