@@ -40,7 +40,12 @@ const Map = () => {
           onClick={() => setShowSearch(!showSearch)}
         />
       </header>
-      {showSearch && <SearchAddress setPosition={setPosition} />}
+      {showSearch && (
+        <SearchAddress
+          setPosition={setPosition}
+          onClose={() => setShowSearch(false)}
+        />
+      )}
       <MapView {...position} markerList={markerList} />
     </>
   );

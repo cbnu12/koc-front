@@ -7,12 +7,14 @@ const cx = classnames.bind(styles);
 
 type Props = {
   setPosition: (position: { lat: number; lng: number }) => void;
+  onClose: () => void;
 };
 
-const SearchAddress = ({ setPosition }: Props) => {
+const SearchAddress = ({ setPosition, onClose }: Props) => {
   return (
     <div className={cx("container")}>
-      <Search border />
+      <div className={cx("background")} onClick={onClose} />
+      <Search border className={cx("input")} />
     </div>
   );
 };

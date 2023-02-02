@@ -10,6 +10,7 @@ type Props = {
   onChange?: () => void;
   placeholder?: string;
   border?: boolean;
+  className?: string;
 };
 
 const Search = ({
@@ -17,9 +18,10 @@ const Search = ({
   onChange,
   placeholder = "지도를 검색해보세요",
   border,
+  className,
 }: Props) => {
   return (
-    <div className={cx("container", border && "border")}>
+    <div className={cx("container", border && "border", className)}>
       <input placeholder={placeholder} value={value} onChange={onChange} />
       <BiSearchAlt className={cx("icon")} />
     </div>
