@@ -42,9 +42,8 @@ const SearchAddress = ({ setPosition, setMapCenter, onClose }: Props) => {
     status: string,
     pagination: Pagination
   ) => {
+    console.log("검색결과", data, pagination, status);
     if (status === kakao.maps.services.Status.OK) {
-      console.log("검색결과", data);
-      console.log(pagination, status);
       // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
       // LatLngBounds 객체에 좌표를 추가합니다
       // var bounds = new kakao.maps.LatLngBounds();
@@ -68,6 +67,8 @@ const SearchAddress = ({ setPosition, setMapCenter, onClose }: Props) => {
           };
         })
       );
+    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+      setResults([]);
     }
   };
 
@@ -92,28 +93,33 @@ const SearchAddress = ({ setPosition, setMapCenter, onClose }: Props) => {
         onKeyDown={onKeyDown}
       />
       <section className={cx("resultSection")}>
-        {results.map((result) => (
-          <div
-            className={cx("resultItem")}
-            onClick={() => {
-              setPosition([
-                {
+        {results.length > 0 ? (
+          results.map((result) => (
+            <div
+              key={result.id}
+              className={cx("resultItem")}
+              onClick={() => {
+                setPosition([
+                  {
+                    lat: parseFloat(result.y),
+                    lng: parseFloat(result.x),
+                    content: `<div class="marker">${result.place_name}</div>`,
+                  },
+                ]);
+                setMapCenter({
                   lat: parseFloat(result.y),
                   lng: parseFloat(result.x),
-                  content: `<div class="marker">${result.place_name}</div>`,
-                },
-              ]);
-              setMapCenter({
-                lat: parseFloat(result.y),
-                lng: parseFloat(result.x),
-              });
-              onClose();
-            }}
-          >
-            <div className={cx("name")}>{result.place_name}</div>
-            <div className={cx("address")}>{result.address_name}</div>
-          </div>
-        ))}
+                });
+                onClose();
+              }}
+            >
+              <div className={cx("name")}>{result.place_name}</div>
+              <div className={cx("address")}>{result.address_name}</div>
+            </div>
+          ))
+        ) : (
+          <div className={cx("resultItem")}>검색 결과가 존재하지 않습니다</div>
+        )}
       </section>
     </div>
   );
