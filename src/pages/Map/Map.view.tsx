@@ -23,7 +23,6 @@ type Props = {
   height?: string;
   level?: number;
   markerList: Place[];
-  // markerList: { lat: number; lng: number; content: string }[];
 };
 
 const MapView = ({
@@ -35,7 +34,15 @@ const MapView = ({
   markerList,
 }: Props) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
-  const [detail, setDetail] = useState<Place | undefined>();
+  const [detail, setDetail] = useState<Place | null>(null);
+
+  const onClickMarker = (marker: Place) => {
+    if (detail) {
+      setDetail(null);
+    } else {
+      setDetail({ ...marker });
+    }
+  };
 
   useEffect(() => {
     if (mapRef.current) {
@@ -57,11 +64,7 @@ const MapView = ({
           markerElement.className = "marker";
           markerElement.innerHTML = marker.place_name;
           markerElement.onclick = () => {
-            if (detail) {
-              setDetail(undefined);
-            } else {
-              setDetail(marker);
-            }
+            onClickMarker(marker);
           };
           const customOverlay = new kakao.maps.CustomOverlay({
             position: new kakao.maps.LatLng(marker.y, marker.x),
@@ -70,9 +73,6 @@ const MapView = ({
             clickable: true,
           });
 
-          kakao.maps.event.addListener(customOverlay, "click", (e: any) => {
-            console.log("!", e);
-          });
           customOverlay.setMap(map);
         });
       } else {
