@@ -45,39 +45,33 @@ const SearchAddress = ({
 
   useEffect(() => {
     if (queryKeyword) {
-      ps.keywordSearch(keyword, placesSearchCB);
+      submitSeachKeywords({ keyword });
     }
   }, []);
 
-  const placesSearchCB = (
-    data: Place[],
-    status: string,
-    pagination: Pagination
-  ) => {
+  useEffect(() => {
+    if (!results) {
+      return;
+    }
+
+    setPosition(
+      results.map((place) => {
+        return {
+          lat: parseFloat(place.y),
+          lng: parseFloat(place.x),
+          content: `<div class="marker">${place.place_name}</div>`,
+        };
+      })
+    );
+  }, [results]);
+
+  const placesSearchCB = (data: Place[], status: string) => {
     if (status === kakao.maps.services.Status.OK) {
-      // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-      // LatLngBounds 객체에 좌표를 추가합니다
-      // var bounds = new kakao.maps.LatLngBounds();
-
-      // for (var i = 0; i < data.length; i++) {
-      //   displayMarker(data[i]);
-      //   bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-      // }
-
-      // // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-      // map.setBounds(bounds);
-
-      setResults(data);
-
-      setPosition(
-        data.map((place) => {
-          return {
-            lat: parseFloat(place.y),
-            lng: parseFloat(place.x),
-            content: `<div class="marker">${place.place_name}</div>`,
-          };
-        })
-      );
+      if (results) {
+        setResults([...results, ...data]);
+      } else {
+        setResults(data);
+      }
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
       setResults([]);
     }
@@ -89,8 +83,20 @@ const SearchAddress = ({
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code === "Enter" && keyword.length > 0) {
-      ps.keywordSearch(keyword, placesSearchCB);
+      submitSeachKeywords({ keyword });
     }
+  };
+
+  const submitSeachKeywords = ({
+    keyword,
+    page = 1,
+    size = 15,
+  }: {
+    keyword: string;
+    page?: number;
+    size?: Number;
+  }) => {
+    ps.keywordSearch(keyword, placesSearchCB, { page, size });
   };
 
   return (
