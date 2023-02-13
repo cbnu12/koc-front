@@ -40,7 +40,7 @@ const SearchAddress = ({
   onClose,
 }: Props) => {
   const [keyword, setKeyword] = useState<string>(queryKeyword ?? "");
-  const [results, setResults] = useState<Place[]>([]);
+  const [results, setResults] = useState<Place[] | undefined>();
   const ps = new kakao.maps.services.Places();
 
   useEffect(() => {
@@ -54,7 +54,6 @@ const SearchAddress = ({
     status: string,
     pagination: Pagination
   ) => {
-    console.log("검색결과", data, pagination, status);
     if (status === kakao.maps.services.Status.OK) {
       // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
       // LatLngBounds 객체에 좌표를 추가합니다
@@ -105,33 +104,37 @@ const SearchAddress = ({
         onKeyDown={onKeyDown}
       />
       <section className={cx("resultSection")}>
-        {results.length > 0 ? (
-          results.map((result) => (
-            <div
-              key={result.id}
-              className={cx("resultItem")}
-              onClick={() => {
-                setPosition([
-                  {
+        {results ? (
+          results.length > 0 ? (
+            results.map((result) => (
+              <div
+                key={result.id}
+                className={cx("resultItem")}
+                onClick={() => {
+                  setPosition([
+                    {
+                      lat: parseFloat(result.y),
+                      lng: parseFloat(result.x),
+                      content: `<div class="marker">${result.place_name}</div>`,
+                    },
+                  ]);
+                  setMapCenter({
                     lat: parseFloat(result.y),
                     lng: parseFloat(result.x),
-                    content: `<div class="marker">${result.place_name}</div>`,
-                  },
-                ]);
-                setMapCenter({
-                  lat: parseFloat(result.y),
-                  lng: parseFloat(result.x),
-                });
-                onClose();
-              }}
-            >
-              <div className={cx("name")}>{result.place_name}</div>
-              <div className={cx("address")}>{result.address_name}</div>
+                  });
+                  onClose();
+                }}
+              >
+                <div className={cx("name")}>{result.place_name}</div>
+                <div className={cx("address")}>{result.address_name}</div>
+              </div>
+            ))
+          ) : (
+            <div className={cx("resultItem")}>
+              검색 결과가 존재하지 않습니다
             </div>
-          ))
-        ) : (
-          <div className={cx("resultItem")}>검색 결과가 존재하지 않습니다</div>
-        )}
+          )
+        ) : undefined}
       </section>
     </div>
   );
