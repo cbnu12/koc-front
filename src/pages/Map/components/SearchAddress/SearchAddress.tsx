@@ -4,42 +4,13 @@ import styles from "./SearchAddress.module.scss";
 import classnames from "classnames/bind";
 import { useEffect, useState } from "react";
 import { InView } from "react-intersection-observer";
+import { Pagination, Place } from "../../types";
 
 const cx = classnames.bind(styles);
 
-type Place = {
-  address_name: string;
-  category_group_name: string;
-  id: string;
-  phone: string;
-  place_name: string;
-  place_url: string;
-  road_address_name: string;
-  x: string;
-  y: string;
-};
-
-type Pagination = {
-  current: number;
-  first: number;
-  hasNextPage: boolean;
-  hasPrevPage: boolean;
-  last: number;
-  perPage: number;
-  totalCount: number;
-  nextPage: () => void;
-  prevPage: () => void;
-};
-
 type Props = {
   queryKeyword?: string;
-  setPosition: (
-    position: {
-      lat: number;
-      lng: number;
-      content: string;
-    }[]
-  ) => void;
+  setPosition: (place: Place[]) => void;
   setMapCenter: (center: { lat: number; lng: number }) => void;
   onClose: () => void;
 };
@@ -66,15 +37,7 @@ const SearchAddress = ({
       return;
     }
 
-    setPosition(
-      results.map((place) => {
-        return {
-          lat: parseFloat(place.y),
-          lng: parseFloat(place.x),
-          content: `<div class="marker">${place.place_name}</div>`,
-        };
-      })
-    );
+    setPosition(results);
   }, [results]);
 
   const placesSearchCB = (
@@ -134,13 +97,7 @@ const SearchAddress = ({
                 key={result.id}
                 className={cx("resultItem")}
                 onClick={() => {
-                  setPosition([
-                    {
-                      lat: parseFloat(result.y),
-                      lng: parseFloat(result.x),
-                      content: `<div class="marker">${result.place_name}</div>`,
-                    },
-                  ]);
+                  setPosition([result]);
                   setMapCenter({
                     lat: parseFloat(result.y),
                     lng: parseFloat(result.x),
