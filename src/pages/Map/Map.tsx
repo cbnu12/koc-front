@@ -10,6 +10,7 @@ import queryString from "query-string";
 import styles from "./Map.module.scss";
 import classnames from "classnames/bind";
 import "./marker.css";
+import { Place } from "./types";
 
 const cx = classnames.bind(styles);
 
@@ -18,9 +19,7 @@ const Map = () => {
   const { keyword } = queryString.parse(search);
 
   const [mapCenter, setMapCenter] = useState<{ lat: number; lng: number }>();
-  const [markerList, setMarkerList] = useState<
-    { lat: number; lng: number; content: string }[]
-  >([]);
+  const [markerList, setMarkerList] = useState<Place[]>([]);
   const navigate = useNavigate();
   const [showSearch, setShowSearch] = useState<boolean>(!!keyword);
 

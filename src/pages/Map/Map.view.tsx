@@ -1,4 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Place } from "./types";
+import { MdPhoneIphone } from "react-icons/md";
+import { FiExternalLink } from "react-icons/fi";
+import { HiLocationMarker } from "react-icons/hi";
+
+import classnames from "classnames/bind";
+import styles from "./Map.module.scss";
+
+const cx = classnames.bind(styles);
 
 declare global {
   interface Window {
@@ -13,7 +22,7 @@ type Props = {
   width?: string;
   height?: string;
   level?: number;
-  markerList: { lat: number; lng: number; content: string }[];
+  markerList: Place[];
 };
 
 const MapView = ({
@@ -25,6 +34,15 @@ const MapView = ({
   markerList,
 }: Props) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
+  const [detail, setDetail] = useState<Place | null>(null);
+
+  const onClickMarker = (marker: Place) => {
+    if (detail) {
+      setDetail(null);
+    } else {
+      setDetail({ ...marker });
+    }
+  };
 
   useEffect(() => {
     if (mapRef.current) {
@@ -36,15 +54,23 @@ const MapView = ({
 
       const markerPoint = new kakao.maps.Marker({
         position: map.getCenter(),
+        clickable: true,
       });
 
       if (markerList) {
         markerList.forEach((marker) => {
+          const markerElement = document.createElement("div");
+
+          markerElement.className = "marker";
+          markerElement.innerHTML = marker.place_name;
+          markerElement.onclick = () => {
+            onClickMarker(marker);
+          };
           const customOverlay = new kakao.maps.CustomOverlay({
-            map,
-            position: new kakao.maps.LatLng(marker.lat, marker.lng),
-            content: marker.content,
+            position: new kakao.maps.LatLng(marker.y, marker.x),
+            content: markerElement,
             yAnchor: 0,
+            clickable: true,
           });
 
           customOverlay.setMap(map);
@@ -55,13 +81,41 @@ const MapView = ({
 
       kakao.maps.event.addListener(map, "click", (e: any) => {
         var latlng = e.latLng;
-
         markerPoint.setPosition(latlng);
       });
     }
   }, [markerList]);
 
-  return <div id="map" style={{ width, height }} ref={mapRef}></div>;
+  return (
+    <>
+      <div id="map" style={{ width, height }} ref={mapRef}></div>
+      {detail && (
+        <div className={cx("container")}>
+          <div className={cx("title")}>
+            <div className={cx("titleSection")}>
+              <div className={cx("name")}>{detail.place_name}</div>
+              <div className={cx("category")}>{detail.category_name}</div>
+            </div>
+            <a className={cx("url")} href={detail.place_url} target="_blank">
+              <FiExternalLink size={22} />
+            </a>
+          </div>
+          <div className={cx("address")}>
+            <HiLocationMarker size={20} />
+            <div className={cx("addressInformation")}>
+              {detail.road_address_name}
+              <br />
+              {detail.address_name}
+            </div>
+          </div>
+          <div className={cx("phone")}>
+            <MdPhoneIphone size={20} />
+            <a href={`tel:${detail.phone}`}>{detail.phone}</a>
+          </div>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default MapView;
