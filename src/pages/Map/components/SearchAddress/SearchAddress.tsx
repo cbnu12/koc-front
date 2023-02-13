@@ -3,6 +3,7 @@ import Search from "../../../../components/Search";
 import styles from "./SearchAddress.module.scss";
 import classnames from "classnames/bind";
 import { useEffect, useState } from "react";
+import { InView } from "react-intersection-observer";
 
 const cx = classnames.bind(styles);
 
@@ -18,7 +19,17 @@ type Place = {
   y: string;
 };
 
-type Pagination = {};
+type Pagination = {
+  current: number;
+  first: number;
+  hasNextPage: boolean;
+  hasPrevPage: boolean;
+  last: number;
+  perPage: number;
+  totalCount: number;
+  nextPage: () => void;
+  prevPage: () => void;
+};
 
 type Props = {
   queryKeyword?: string;
@@ -42,6 +53,7 @@ const SearchAddress = ({
   const [keyword, setKeyword] = useState<string>(queryKeyword ?? "");
   const [results, setResults] = useState<Place[] | undefined>();
   const ps = new kakao.maps.services.Places();
+  const [current, setCurrent] = useState<Pagination | undefined>();
 
   useEffect(() => {
     if (queryKeyword) {
@@ -65,13 +77,18 @@ const SearchAddress = ({
     );
   }, [results]);
 
-  const placesSearchCB = (data: Place[], status: string) => {
+  const placesSearchCB = (
+    data: Place[],
+    status: string,
+    pagination: Pagination
+  ) => {
     if (status === kakao.maps.services.Status.OK) {
       if (results) {
         setResults([...results, ...data]);
       } else {
         setResults(data);
       }
+      setCurrent(pagination);
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
       setResults([]);
     }
@@ -141,6 +158,18 @@ const SearchAddress = ({
             </div>
           )
         ) : undefined}
+        <InView
+          skip={!current?.hasNextPage}
+          onChange={(inView) => {
+            if (inView && current) {
+              submitSeachKeywords({
+                keyword,
+                page: current.current + 1,
+                size: current.perPage,
+              });
+            }
+          }}
+        />
       </section>
     </div>
   );
