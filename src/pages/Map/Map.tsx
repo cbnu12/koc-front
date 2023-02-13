@@ -19,10 +19,7 @@ const Map = () => {
   const { keyword } = queryString.parse(search);
 
   const [mapCenter, setMapCenter] = useState<{ lat: number; lng: number }>();
-  const [markerList, setMarkerList] = useState<
-    Place[]
-    // { lat: number; lng: number; content: string }[]
-  >([]);
+  const [markerList, setMarkerList] = useState<Place[]>([]);
   const navigate = useNavigate();
   const [showSearch, setShowSearch] = useState<boolean>(!!keyword);
 
