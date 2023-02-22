@@ -2,17 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { Place } from "../../common/types";
 
 import classnames from "classnames/bind";
-import styles from "./Map.module.scss";
-import Detail from "../../components/Detail";
+import styles from "./ThemeDetail.module.scss";
 
 const cx = classnames.bind(styles);
-
-declare global {
-  interface Window {
-    kakao: any;
-  }
-  const kakao: any;
-}
 
 type Props = {
   lat?: number;
@@ -82,12 +74,11 @@ const MapView = ({
         markerPoint.setPosition(latlng);
       });
     }
-  }, [markerList]);
+  }, []);
 
   return (
     <>
       <div id="map" style={{ width, height }} ref={mapRef}></div>
-      {detail && <Detail {...detail} />}
     </>
   );
 };

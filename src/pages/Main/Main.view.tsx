@@ -62,12 +62,14 @@ const MainView = ({}: Props) => {
         description="사랑받는 장소들을 소개합니다."
         itemList={HotPlaceList}
         direction="row"
+        path="/place/detail"
       />
       <Section
         title="추천 테마"
         description="사랑받는 장소들을 소개합니다."
         itemList={HotPlaceList}
         direction="column"
+        path="/theme/detail"
       />
     </div>
   );
