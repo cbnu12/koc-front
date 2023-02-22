@@ -1,5 +1,9 @@
+import { useParams } from "react-router-dom";
+
 const PlaceDetail = () => {
-  return <></>;
+  const { placeId } = useParams();
+
+  return <>{placeId}</>;
 };
 
 export default PlaceDetail;

@@ -1,5 +1,8 @@
+import { useParams } from "react-router-dom";
+
 const ThemeDetail = () => {
-  return <></>;
+  const { themeId } = useParams();
+  return <>{themeId}</>;
 };
 
 export default ThemeDetail;
