@@ -76,6 +76,7 @@ const SearchAddress = ({
     page?: number;
     size?: Number;
   }) => {
+    setResults([]);
     ps.keywordSearch(keyword, placesSearchCB, { page, size });
   };
 
