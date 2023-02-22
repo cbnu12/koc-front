@@ -1,11 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Place } from "../../common/types";
-import { MdPhoneIphone } from "react-icons/md";
-import { FiExternalLink } from "react-icons/fi";
-import { HiLocationMarker } from "react-icons/hi";
 
 import classnames from "classnames/bind";
 import styles from "./Map.module.scss";
+import Detail from "../../components/Detail";
 
 const cx = classnames.bind(styles);
 
@@ -89,31 +87,7 @@ const MapView = ({
   return (
     <>
       <div id="map" style={{ width, height }} ref={mapRef}></div>
-      {detail && (
-        <div className={cx("container")}>
-          <div className={cx("title")}>
-            <div className={cx("titleSection")}>
-              <div className={cx("name")}>{detail.place_name}</div>
-              <div className={cx("category")}>{detail.category_name}</div>
-            </div>
-            <a className={cx("url")} href={detail.place_url} target="_blank">
-              <FiExternalLink size={22} />
-            </a>
-          </div>
-          <div className={cx("address")}>
-            <HiLocationMarker size={20} />
-            <div className={cx("addressInformation")}>
-              {detail.road_address_name}
-              <br />
-              {detail.address_name}
-            </div>
-          </div>
-          <div className={cx("phone")}>
-            <MdPhoneIphone size={20} />
-            <a href={`tel:${detail.phone}`}>{detail.phone}</a>
-          </div>
-        </div>
-      )}
+      {detail && <Detail {...detail} />}
     </>
   );
 };
