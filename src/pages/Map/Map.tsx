@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { BiSearchAlt } from "react-icons/bi";
 import queryString from "query-string";
 import { Place } from "../../common/types";
-import Header from "../../common/componenents/Header";
+import Header from "../../components/Header";
 
 import styles from "./Map.module.scss";
 import classnames from "classnames/bind";

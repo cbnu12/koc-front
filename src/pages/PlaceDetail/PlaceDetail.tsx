@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import Header from "../../common/componenents/Header";
+import Header from "../../components/Header";
 import { Place } from "../../common/types";
 import MapView from "./Map.view";
 
