@@ -52,6 +52,7 @@ const SearchAddress = ({
         setResults(data);
       }
       setCurrent(pagination);
+      console.log(data);
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
       setResults([]);
     }
