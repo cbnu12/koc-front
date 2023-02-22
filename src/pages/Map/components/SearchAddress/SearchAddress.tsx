@@ -4,7 +4,7 @@ import styles from "./SearchAddress.module.scss";
 import classnames from "classnames/bind";
 import { useEffect, useState } from "react";
 import { InView } from "react-intersection-observer";
-import { Pagination, Place } from "../../types";
+import { Pagination, Place } from "../../../../common/types";
 
 const cx = classnames.bind(styles);
 

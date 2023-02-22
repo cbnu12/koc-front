@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Place } from "./types";
+import { Place } from "../../common/types";
 import { MdPhoneIphone } from "react-icons/md";
 import { FiExternalLink } from "react-icons/fi";
 import { HiLocationMarker } from "react-icons/hi";
