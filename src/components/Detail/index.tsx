@@ -1,4 +1,3 @@
-import React, { useEffect, useRef, useState } from "react";
 import { MdPhoneIphone } from "react-icons/md";
 import { FiExternalLink } from "react-icons/fi";
 import { HiLocationMarker } from "react-icons/hi";
@@ -9,7 +8,9 @@ import { Place } from "../../common/types";
 
 const cx = classnames.bind(styles);
 
-type Props = {};
+type Props = {
+  className?: string;
+};
 
 const Detail = ({
   place_name,
@@ -18,9 +19,10 @@ const Detail = ({
   road_address_name,
   address_name,
   phone,
+  className,
 }: Props & Place) => {
   return (
-    <div className={cx("container")}>
+    <div className={cx("container", className)}>
       <div className={cx("title")}>
         <div className={cx("titleSection")}>
           <div className={cx("name")}>{place_name}</div>
