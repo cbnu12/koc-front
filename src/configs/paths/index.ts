@@ -1,5 +1,6 @@
 export const PageRouts = {
   main: "/",
-  theme: "/theme/:theme",
   map: "/map",
+  placeDetail: "/place/detail/:placeId",
+  themeDetail: "/theme/detail/:themeId",
 };
