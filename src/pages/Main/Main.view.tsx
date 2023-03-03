@@ -50,7 +50,12 @@ const MainView = ({}: Props) => {
   return (
     <div className={cx("container")}>
       <section className={cx("section")}>
-        <Search value={keyword} onChange={onChange} onKeyDown={onKeyDown} />
+        <Search
+          className={cx("search")}
+          value={keyword}
+          onChange={onChange}
+          onKeyDown={onKeyDown}
+        />
         <button onClick={() => navigate("/map")} className={cx("button")}>
           <div>
             <RiRoadMapFill className={cx("icon")} />내 주변 장소 찾기
