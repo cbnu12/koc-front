@@ -2,7 +2,7 @@ import Search from "../../../../components/Search";
 
 import styles from "./SearchAddress.module.scss";
 import classnames from "classnames/bind";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { InView } from "react-intersection-observer";
 import { Pagination, Place } from "../../../../common/types";
 
@@ -25,6 +25,7 @@ const SearchAddress = ({
   const [results, setResults] = useState<Place[] | undefined>();
   const ps = new kakao.maps.services.Places();
   const [current, setCurrent] = useState<Pagination | undefined>();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (queryKeyword) {
@@ -65,6 +66,7 @@ const SearchAddress = ({
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code === "Enter" && keyword.length > 0) {
       submitSeachKeywords({ keyword });
+      inputRef.current?.blur();
     }
   };
 
@@ -90,6 +92,7 @@ const SearchAddress = ({
         value={keyword}
         onChange={onChange}
         onKeyDown={onKeyDown}
+        ref={inputRef}
       />
       <section className={cx("resultSection")}>
         {results ? (

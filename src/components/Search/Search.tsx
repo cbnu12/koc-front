@@ -12,6 +12,7 @@ type Props = {
   placeholder?: string;
   border?: boolean;
   className?: string;
+  ref?: React.LegacyRef<HTMLInputElement>;
 };
 
 const Search = ({
@@ -21,10 +22,12 @@ const Search = ({
   placeholder = "지도를 검색해보세요",
   border,
   className,
+  ref,
 }: Props) => {
   return (
     <div className={cx("container", border && "border", className)}>
       <input
+        ref={ref}
         placeholder={placeholder}
         value={value}
         onChange={onChange}

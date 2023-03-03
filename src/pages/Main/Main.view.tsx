@@ -6,7 +6,7 @@ import Section from "./components/Section";
 import styles from "./Main.module.scss";
 import classnames from "classnames/bind";
 import Search from "../../components/Search";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const cx = classnames.bind(styles);
 
@@ -35,6 +35,7 @@ type Props = {};
 
 const MainView = ({}: Props) => {
   const navigate = useNavigate();
+  const inputRef = useRef<HTMLInputElement>(null);
   const [keyword, setKeyword] = useState<string>("");
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -44,13 +45,20 @@ const MainView = ({}: Props) => {
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code === "Enter" && keyword.length > 0) {
       navigate(`/map?keyword=${keyword}`);
+      inputRef.current?.blur();
     }
   };
 
   return (
     <div className={cx("container")}>
       <section className={cx("section")}>
-        <Search value={keyword} onChange={onChange} onKeyDown={onKeyDown} />
+        <Search
+          ref={inputRef}
+          className={cx("search")}
+          value={keyword}
+          onChange={onChange}
+          onKeyDown={onKeyDown}
+        />
         <button onClick={() => navigate("/map")} className={cx("button")}>
           <div>
             <RiRoadMapFill className={cx("icon")} />내 주변 장소 찾기

@@ -6,7 +6,7 @@
   max-width: 400px;
   min-width: 300px;
   gap: 10px;
-  padding: 30px;
+  padding: 25px;
   position: fixed;
   bottom: 20px;
   left: 50%;
@@ -31,7 +31,7 @@
   .titleSection {
     display: flex;
     justify-content: start;
-    align-items: start;
+    align-items: center;
     gap: 5px;
     flex-wrap: wrap;
     flex-grow: 1;
