@@ -2,9 +2,14 @@
   display: flex;
   gap: 20px;
   flex-direction: column;
-  height: calc(100vh - 40px);
-  padding: 20px 0;
+  height: calc(100vh - 20px);
+  padding: 20px 20px 0;
   overflow: auto;
+  min-width: 250px;
+
+  &::-webkit-scrollbar{
+    display: none;
+  }
 }
 
 .item{
@@ -19,6 +24,10 @@
  & a {
     color: #575757;
     text-decoration: none;
+  }
+  
+  &:last-child{
+    margin-bottom: 20px;
   }
 }
 
