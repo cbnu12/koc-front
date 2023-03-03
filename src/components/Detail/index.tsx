@@ -28,9 +28,11 @@ const Detail = ({
           <div className={cx("name")}>{place_name}</div>
           <div className={cx("category")}>{category_name}</div>
         </div>
-        <a className={cx("url")} href={place_url} target="_blank">
-          <FiExternalLink size={22} />
-        </a>
+        {place_url && (
+          <a className={cx("url")} href={place_url} target="_blank">
+            <FiExternalLink size={22} />
+          </a>
+        )}
       </div>
       <div className={cx("address")}>
         <HiLocationMarker size={18} />
@@ -40,10 +42,12 @@ const Detail = ({
           {address_name}
         </div>
       </div>
-      <div className={cx("phone")}>
-        <MdPhoneIphone size={18} />
-        <a href={`tel:${phone}`}>{phone}</a>
-      </div>
+      {phone && (
+        <div className={cx("phone")}>
+          <MdPhoneIphone size={18} />
+          <a href={`tel:${phone}`}>{phone}</a>
+        </div>
+      )}
     </div>
   );
 };
