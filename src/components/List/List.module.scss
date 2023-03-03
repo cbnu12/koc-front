@@ -49,6 +49,11 @@
   justify-content: start;
   align-items: center;
   gap: 5px;
+  color: black;
+
+  &:last-child{
+  color: rgb(216, 50, 0);
+  }
 }
 
 .addressInformation {

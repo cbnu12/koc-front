@@ -109,7 +109,7 @@ const List = ({ className }: Props) => {
         <section className={cx("item")} key={place.id}>
           <div className={cx("title")}>
             <div className={cx("name")}>{place.place_name}</div>
-            <a className={cx("url")} href={place.place_url} target="_blank">
+            <a href={place.place_url} target="_blank">
               <FiExternalLink size={22} />
             </a>
           </div>
