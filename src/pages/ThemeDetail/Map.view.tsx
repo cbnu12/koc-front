@@ -50,6 +50,8 @@ const MapView = ({
       });
 
       if (markerList) {
+        let bounds = new kakao.maps.LatLngBounds();
+
         markerList.forEach((marker) => {
           const markerElement = document.createElement("div");
 
@@ -58,15 +60,21 @@ const MapView = ({
           markerElement.onclick = () => {
             onClickMarker(marker);
           };
+
+          const position = new kakao.maps.LatLng(marker.y, marker.x);
           const customOverlay = new kakao.maps.CustomOverlay({
-            position: new kakao.maps.LatLng(marker.y, marker.x),
+            position,
             content: markerElement,
             yAnchor: 0,
             clickable: true,
           });
 
+          bounds.extend(position);
+
           customOverlay.setMap(map);
         });
+
+        map.setBounds(bounds, 50, 50, 50, 50);
       } else {
         markerPoint.setMap(map);
       }
