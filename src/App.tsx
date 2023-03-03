@@ -7,6 +7,7 @@ import "./App.css";
 import NotFound from "./pages/NotFound";
 import PlaceDetail from "./pages/PlaceDetail";
 import ThemeDetail from "./pages/ThemeDetail";
+import CourseDetail from "./pages/CourseDetail";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path={PageRouts.map} element={<Map />} />
         <Route path={PageRouts.themeDetail} element={<ThemeDetail />} />
         <Route path={PageRouts.placeDetail} element={<PlaceDetail />} />
+        <Route path={PageRouts.courseDetail} element={<CourseDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

@@ -2,9 +2,10 @@ import { useParams } from "react-router-dom";
 import Header from "../../components/Header";
 import { Place } from "../../common/types";
 import MapView from "./Map.view";
+import List from "../../components/List";
 
 import classnames from "classnames/bind";
-import styles from "./ThemeDetail.module.scss";
+import styles from "./CourseDetail.module.scss";
 import { useState } from "react";
 
 const cx = classnames.bind(styles);
@@ -86,7 +87,7 @@ const res: ResPlace[] = [
   },
 ];
 
-const ThemeDetail = () => {
+const CourseDetail = () => {
   const { themeId } = useParams();
   const markerList = res.map(
     ({
@@ -118,8 +119,9 @@ const ThemeDetail = () => {
     <>
       <Header />
       <MapView markerList={markerList} />
+      <List className={cx("list")} placeList={res} onClickItem={(id) => {}} />
     </>
   );
 };
 
-export default ThemeDetail;
+export default CourseDetail;
