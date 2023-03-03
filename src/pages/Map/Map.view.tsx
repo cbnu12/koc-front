@@ -44,6 +44,8 @@ const MapView = ({
 
   useEffect(() => {
     if (mapRef.current) {
+      mapRef.current.innerHTML = "";
+      
       const options = {
         center: new kakao.maps.LatLng(lat, lng),
         level,
