@@ -33,7 +33,7 @@ const Detail = ({
         </a>
       </div>
       <div className={cx("address")}>
-        <HiLocationMarker size={20} />
+        <HiLocationMarker size={18} />
         <div className={cx("addressInformation")}>
           {road_address_name}
           <br />
@@ -41,7 +41,7 @@ const Detail = ({
         </div>
       </div>
       <div className={cx("phone")}>
-        <MdPhoneIphone size={20} />
+        <MdPhoneIphone size={18} />
         <a href={`tel:${phone}`}>{phone}</a>
       </div>
     </div>

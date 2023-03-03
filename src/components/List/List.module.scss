@@ -1,0 +1,67 @@
+.container{
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  height: calc(100vh - 20px);
+  padding: 20px 20px 0;
+  overflow: auto;
+  min-width: 250px;
+
+  &::-webkit-scrollbar{
+    display: none;
+  }
+}
+
+.item{
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px 20px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.2);
+  
+ & a {
+    color: #575757;
+    text-decoration: none;
+  }
+  
+  &:last-child{
+    margin-bottom: 20px;
+  }
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.name {
+  font-weight: 900;
+  font-size: 18px;
+  color: #505050;
+}
+
+.information {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 5px;
+}
+
+.addressInformation {
+  font-weight: 600;
+  font-size: 12px;
+  color: #575757;
+  line-height: 24px;
+}
+
+.descriptionInformation{
+  font-weight: 600;
+  font-size: 12px;
+  color: #575757;
+  line-height: 24px;
+
+}
