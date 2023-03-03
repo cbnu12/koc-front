@@ -4,6 +4,11 @@ import { Place } from "../../common/types";
 import MapView from "./Map.view";
 import Detail from "../../components/Detail";
 
+import classnames from "classnames/bind";
+import styles from "./PlaceDetail.module.scss";
+
+const cx = classnames.bind(styles);
+
 const place: Place = {
   address_name: "경기 성남시 분당구 백현동 532",
   category_name: "서비스,산업 > 인터넷,IT",
@@ -43,11 +48,11 @@ const PlaceDetail = () => {
   const { placeId } = useParams();
 
   return (
-    <>
+    <div className={cx("container")}>
       <Header />
       <MapView marker={place} />
       <Detail {...place} />
-    </>
+    </div>
   );
 };
 

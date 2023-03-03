@@ -6,7 +6,6 @@ import List from "../../components/List";
 
 import classnames from "classnames/bind";
 import styles from "./CourseDetail.module.scss";
-import { useState } from "react";
 
 const cx = classnames.bind(styles);
 
@@ -116,11 +115,11 @@ const CourseDetail = () => {
   );
 
   return (
-    <>
+    <div className={cx("container")}>
       <Header />
       <MapView markerList={markerList} />
       <List className={cx("list")} placeList={res} onClickItem={(id) => {}} />
-    </>
+    </div>
   );
 };
 

@@ -87,10 +87,10 @@ const MapView = ({
   }, [markerList]);
 
   return (
-    <>
+    <div className={cx("container")}>
       <div id="map" style={{ width, height }} ref={mapRef}></div>
       {detail && <Detail {...detail} />}
-    </>
+    </div>
   );
 };
 

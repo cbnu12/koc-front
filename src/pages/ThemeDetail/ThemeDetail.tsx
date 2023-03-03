@@ -115,10 +115,10 @@ const ThemeDetail = () => {
   );
 
   return (
-    <>
+    <div className={cx("container")}>
       <Header />
       <MapView markerList={markerList} />
-    </>
+    </div>
   );
 };
 
