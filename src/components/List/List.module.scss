@@ -20,7 +20,8 @@
   flex-direction: column;
   gap: 0px;
   box-shadow: 12px 12px 2px 1px rgba(0, 0, 0, 0.2);
-  
+  border: none;
+
  & a {
     color: #575757;
     text-decoration: none;
@@ -36,6 +37,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
+  width: 100%;
 }
 
 .name {
@@ -49,6 +51,11 @@
   justify-content: start;
   align-items: center;
   gap: 5px;
+  color: black;
+
+  &:last-child{
+  color: rgb(216, 50, 0);
+  }
 }
 
 .addressInformation {
