@@ -7,7 +7,6 @@ import styles from "./List.module.scss";
 
 const cx = classnames.bind(styles);
 
-
 type Props = {
   placeList: {
     id: string;
