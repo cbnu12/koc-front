@@ -3,4 +3,5 @@ export const PageRouts = {
   map: "/map",
   placeDetail: "/place/detail/:placeId",
   themeDetail: "/theme/detail/:themeId",
+  courseDetail: "/course/detail/:themeId",
 };
