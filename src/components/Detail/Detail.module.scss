@@ -33,18 +33,20 @@
     justify-content: start;
     align-items: start;
     gap: 5px;
+    flex-wrap: wrap;
+    flex-grow: 1;
   }
 
   .name {
     font-weight: 900;
-    font-size: 20px;
+    font-size: 18px;
     color: #505050;
   }
 
   .category {
-    padding: 5px;
+    padding: 5px 8px;
     border-radius: 10px;
-    flex-grow: 1;
+    width: fit-content;
     background-color: #e7a618;
     color: white;
     font-weight: 600;
@@ -60,7 +62,7 @@
 
   .addressInformation {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     color: #575757;
     line-height: 24px;
   }
@@ -70,7 +72,7 @@
     justify-content: start;
     align-items: center;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     gap: 5px;
   }
 }

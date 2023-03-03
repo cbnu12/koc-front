@@ -22,7 +22,8 @@
   left: 50%;
   top: calc(30% + 10px);
   z-index: 9;
-  width: 440px;
+  max-width: 440px;
+  width: calc(100% - 40px);
   height: calc(70% - 100px);
   overflow: auto;
   overflow-x: hidden;
