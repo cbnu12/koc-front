@@ -133,6 +133,7 @@ const CourseDetail = () => {
         ]}
       />
       <MapView markerList={markerList} />
+      <div className={cx("owner")}>made by KOCKOC</div>
       <List className={cx("list")} placeList={res} onClickItem={(id) => {}} />
     </div>
   );
