@@ -17,3 +17,32 @@
     }
   }
 }
+
+.name{
+  margin: 10px 0;
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.liked{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  & > svg{
+    width: 25px;
+    height: 25px;
+    margin: 10px 0;
+    color: white;
+  }
+  
+  .count{
+    margin: 10px 0;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+  }
+}
