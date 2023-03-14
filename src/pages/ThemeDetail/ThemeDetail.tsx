@@ -116,7 +116,7 @@ const ThemeDetail = () => {
 
   return (
     <div className={cx("container")}>
-      <Header />
+      <Header additionalIcons={[<div className={cx("name")}>테마 이름</div>]} />
       <MapView markerList={markerList} />
     </div>
   );

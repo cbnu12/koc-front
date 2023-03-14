@@ -1,9 +1,19 @@
 .container{
   overflow: hidden;
 }
+
 .list{
   position: fixed;
   z-index: 20;
   top: 0;
   right: 10px;
+}
+
+.name{
+  margin: 10px 0;
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
 }
