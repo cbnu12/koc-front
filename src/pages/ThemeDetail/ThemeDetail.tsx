@@ -2,10 +2,11 @@ import { useParams } from "react-router-dom";
 import Header from "../../components/Header";
 import { Place } from "../../common/types";
 import MapView from "./Map.view";
+import FloatingButton from "../../components/FloatingButton";
+import { HiPlus } from "react-icons/hi";
 
 import classnames from "classnames/bind";
 import styles from "./ThemeDetail.module.scss";
-import { useState } from "react";
 
 const cx = classnames.bind(styles);
 
@@ -118,6 +119,9 @@ const ThemeDetail = () => {
     <div className={cx("container")}>
       <Header additionalIcons={[<div className={cx("name")}>테마 이름</div>]} />
       <MapView markerList={markerList} />
+      <FloatingButton onClick={() => alert("장소 추가")}>
+        <HiPlus /> 장소 추가 하기
+      </FloatingButton>
     </div>
   );
 };
