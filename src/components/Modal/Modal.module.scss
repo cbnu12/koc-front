@@ -1,0 +1,45 @@
+.dim{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba($color: #000000, $alpha: 0.4);
+  z-index: 99;
+}
+
+.container{
+  width: 60%;
+  max-width: 450px;
+  height: 50%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: white;
+  border-radius: 20px;
+  z-index: 100;
+  transform: translate(-50%, -50%);
+  padding: 40px;
+  display: relative;
+}
+
+.closeButton{
+  border: none;
+  background: none;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+}
+
+.title{
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+
+.description{
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #8d8d8d;
+}
