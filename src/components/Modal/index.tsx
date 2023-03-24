@@ -34,7 +34,7 @@ const Modal = ({
         )}
         {title && <div className={cx("title")}>{title}</div>}
         {description && <div className={cx("description")}>{description}</div>}
-        {children}
+        {children && <div className={cx("content")}>{children}</div>}
       </div>
     </>
   );

@@ -1,10 +1,9 @@
-import Search from "../../../../components/Search";
-
 import styles from "./SearchAddress.module.scss";
 import classnames from "classnames/bind";
 import { useEffect, useRef, useState } from "react";
 import { InView } from "react-intersection-observer";
 import { Pagination, Place } from "../../../../common/types";
+import Search from "../../../../components/Search";
 
 const cx = classnames.bind(styles);
 
@@ -12,15 +11,9 @@ type Props = {
   queryKeyword?: string;
   setPosition: (place: Place[]) => void;
   setMapCenter: (center: { lat: number; lng: number }) => void;
-  onClose: () => void;
 };
 
-const SearchAddress = ({
-  queryKeyword,
-  setPosition,
-  setMapCenter,
-  onClose,
-}: Props) => {
+const SearchAddress = ({ queryKeyword, setPosition, setMapCenter }: Props) => {
   const [keyword, setKeyword] = useState<string>(queryKeyword ?? "");
   const [results, setResults] = useState<Place[] | undefined>();
   const ps = new kakao.maps.services.Places();
@@ -85,7 +78,6 @@ const SearchAddress = ({
 
   return (
     <div className={cx("container")}>
-      <div className={cx("background")} onClick={onClose} />
       <Search
         border
         className={cx("input")}
@@ -94,9 +86,9 @@ const SearchAddress = ({
         onKeyDown={onKeyDown}
         ref={inputRef}
       />
-      <section className={cx("resultSection")}>
-        {results ? (
-          results.length > 0 ? (
+      {results && (
+        <section className={cx("resultSection")}>
+          {results.length > 0 ? (
             results.map((result) => (
               <div
                 key={result.id}
@@ -107,7 +99,6 @@ const SearchAddress = ({
                     lat: parseFloat(result.y),
                     lng: parseFloat(result.x),
                   });
-                  onClose();
                 }}
               >
                 <div className={cx("name")}>{result.place_name}</div>
@@ -118,21 +109,21 @@ const SearchAddress = ({
             <div className={cx("resultItem")}>
               검색 결과가 존재하지 않습니다
             </div>
-          )
-        ) : undefined}
-        <InView
-          skip={!current?.hasNextPage}
-          onChange={(inView) => {
-            if (inView && current) {
-              submitSeachKeywords({
-                keyword,
-                page: current.current + 1,
-                size: current.perPage,
-              });
-            }
-          }}
-        />
-      </section>
+          )}
+          <InView
+            skip={!current?.hasNextPage}
+            onChange={(inView) => {
+              if (inView && current) {
+                submitSeachKeywords({
+                  keyword,
+                  page: current.current + 1,
+                  size: current.perPage,
+                });
+              }
+            }}
+          />
+        </section>
+      )}
     </div>
   );
 };
