@@ -30,6 +30,16 @@
   &:last-child{
     margin-bottom: 20px;
   }
+
+  &:hover{
+    background-color: #e7a618;
+
+    .name, 
+    .addressInformation, 
+    .descriptionInformation {
+      color: white;
+    }
+  }
 }
 
 .title {
@@ -54,7 +64,7 @@
   color: black;
 
   &:last-child{
-  color: rgb(216, 50, 0);
+    color: rgb(216, 50, 0);
   }
 }
 
@@ -70,5 +80,4 @@
   font-size: 12px;
   color: #575757;
   line-height: 24px;
-
 }

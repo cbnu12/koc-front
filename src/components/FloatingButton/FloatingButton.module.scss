@@ -1,0 +1,19 @@
+.container{
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 10;
+}
+
+.button{
+  display: flex;
+  gap: 10px;
+  color: #e7a618;
+  background-color: white;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 3px 2px rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+}

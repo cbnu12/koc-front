@@ -3,9 +3,11 @@ import Header from "../../components/Header";
 import { Place } from "../../common/types";
 import MapView from "./Map.view";
 import List from "../../components/List";
+import { BsHeartFill, BsHeart } from "react-icons/bs";
 
 import classnames from "classnames/bind";
 import styles from "./CourseDetail.module.scss";
+import { useState } from "react";
 
 const cx = classnames.bind(styles);
 
@@ -88,6 +90,7 @@ const res: ResPlace[] = [
 
 const CourseDetail = () => {
   const { themeId } = useParams();
+  const [liked, setLiked] = useState<boolean>(false);
   const markerList = res.map(
     ({
       id,
@@ -116,8 +119,21 @@ const CourseDetail = () => {
 
   return (
     <div className={cx("container")}>
-      <Header />
+      <Header
+        additionalIcons={[
+          <div className={cx("name")}>코스 이름</div>,
+          <div className={cx("liked")}>
+            {liked ? (
+              <BsHeartFill onClick={() => setLiked(false)} />
+            ) : (
+              <BsHeart onClick={() => setLiked(true)} />
+            )}
+            <div className={cx("count")}>{liked ? 21 : 20}</div>
+          </div>,
+        ]}
+      />
       <MapView markerList={markerList} />
+      <div className={cx("owner")}>made by KOCKOC</div>
       <List className={cx("list")} placeList={res} onClickItem={(id) => {}} />
     </div>
   );
