@@ -121,17 +121,21 @@ const ThemeDetail = () => {
   const [showModal, setModal] = useState<boolean>(false);
   const [mapCenter, setMapCenter] = useState<{ lat: number; lng: number }>();
   const [placeList, setPlaceList] = useState<Place[]>([]);
-
+  const [selected, setSelected] = useState<Place | null>(null);
   const themeTitle = "테마 이름";
 
   const onClickMarker = (place: Place) => {
-    console.log(place);
-
     setPlaceList([place]);
     setMapCenter({
       lat: parseFloat(place.y),
       lng: parseFloat(place.x),
     });
+    setSelected(place);
+  };
+
+  const onClickSubmit = () => {
+    alert("api 요청!");
+    console.log(themeId, selected);
   };
 
   return (
@@ -162,6 +166,14 @@ const ThemeDetail = () => {
             onClickMarker={onClickMarker}
           />
         </div>
+        <button
+          disabled={!selected}
+          type="button"
+          className={cx("submit")}
+          onClick={onClickSubmit}
+        >
+          추가하기
+        </button>
       </Modal>
     </div>
   );
