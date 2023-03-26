@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <BrowserRouter basename="/koc-front">
+  <BrowserRouter basename={process.env.REACT_APP_BASE_NAME ?? ""}>
     <App />
   </BrowserRouter>
 );

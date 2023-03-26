@@ -57,7 +57,7 @@ const MapView = ({
         clickable: true,
       });
 
-      if (markerList) {
+      if (markerList.length > 0) {
         markerList.forEach((marker) => {
           const markerElement = document.createElement("div");
 
