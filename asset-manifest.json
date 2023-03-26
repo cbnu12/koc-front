@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/koc-front/static/css/main.6b544a57.css",
-    "main.js": "/koc-front/static/js/main.f4f35b51.js",
+    "main.css": "/koc-front/static/css/main.f7922cf6.css",
+    "main.js": "/koc-front/static/js/main.f682a0dc.js",
     "static/js/589.84000298.chunk.js": "/koc-front/static/js/589.84000298.chunk.js",
     "static/media/NanumSquareRoundR.ttf": "/koc-front/static/media/NanumSquareRoundR.f062cb52be3e9829834c.ttf",
     "static/media/NanumSquareRoundB.ttf": "/koc-front/static/media/NanumSquareRoundB.8ab117fc37409bd022e5.ttf",
@@ -12,12 +12,12 @@
     "static/media/NanumSquareRoundOTFEB.otf": "/koc-front/static/media/NanumSquareRoundOTFEB.733974e155ee3bc2e024.otf",
     "static/media/NanumSquareRoundOTFL.otf": "/koc-front/static/media/NanumSquareRoundOTFL.01252d794628d0c48d33.otf",
     "index.html": "/koc-front/index.html",
-    "main.6b544a57.css.map": "/koc-front/static/css/main.6b544a57.css.map",
-    "main.f4f35b51.js.map": "/koc-front/static/js/main.f4f35b51.js.map",
+    "main.f7922cf6.css.map": "/koc-front/static/css/main.f7922cf6.css.map",
+    "main.f682a0dc.js.map": "/koc-front/static/js/main.f682a0dc.js.map",
     "589.84000298.chunk.js.map": "/koc-front/static/js/589.84000298.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6b544a57.css",
-    "static/js/main.f4f35b51.js"
+    "static/css/main.f7922cf6.css",
+    "static/js/main.f682a0dc.js"
   ]
 }
