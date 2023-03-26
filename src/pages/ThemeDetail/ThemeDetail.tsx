@@ -119,8 +119,20 @@ const ThemeDetail = () => {
     }
   );
   const [showModal, setModal] = useState<boolean>(false);
+  const [mapCenter, setMapCenter] = useState<{ lat: number; lng: number }>();
+  const [placeList, setPlaceList] = useState<Place[]>([]);
 
   const themeTitle = "테마 이름";
+
+  const onClickMarker = (place: Place) => {
+    console.log(place);
+
+    setPlaceList([place]);
+    setMapCenter({
+      lat: parseFloat(place.y),
+      lng: parseFloat(place.x),
+    });
+  };
 
   return (
     <div className={cx("container")}>
@@ -138,8 +150,17 @@ const ThemeDetail = () => {
         onClose={() => setModal(false)}
       >
         <div className={cx("flex")}>
-          <SearchAddress setPosition={() => {}} setMapCenter={() => {}} />
-          <SmallMapView width="40%" height="500px" markerList={[]} />
+          <SearchAddress
+            setPosition={setPlaceList}
+            setMapCenter={setMapCenter}
+          />
+          <SmallMapView
+            width="40%"
+            height="500px"
+            markerList={placeList}
+            {...mapCenter}
+            onClickMarker={onClickMarker}
+          />
         </div>
       </Modal>
     </div>

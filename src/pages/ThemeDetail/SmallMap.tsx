@@ -13,6 +13,7 @@ type Props = {
   height?: string;
   level?: number;
   markerList: Place[];
+  onClickMarker: (place: Place) => void;
 };
 
 const SmallMapView = ({
@@ -20,19 +21,11 @@ const SmallMapView = ({
   lng = 127.108212,
   width = "100vw",
   height = "100vh",
-  level = 3,
+  level = 5,
   markerList,
+  onClickMarker,
 }: Props) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
-  const [detail, setDetail] = useState<Place | null>(null);
-
-  const onClickMarker = (marker: Place) => {
-    if (detail) {
-      setDetail(null);
-    } else {
-      setDetail({ ...marker });
-    }
-  };
 
   useEffect(() => {
     if (mapRef.current) {
@@ -75,18 +68,11 @@ const SmallMapView = ({
         });
 
         map.setBounds(bounds, 50, 50, 50, 50);
-      } else {
-        markerPoint.setMap(map);
       }
-
-      kakao.maps.event.addListener(map, "click", (e: any) => {
-        var latlng = e.latLng;
-        markerPoint.setPosition(latlng);
-      });
     }
-  }, []);
+  }, [markerList]);
 
-  return <div id="map" style={{ width, height }} ref={mapRef}></div>;
+  return <div id="map" style={{ width, height }} ref={mapRef} />;
 };
 
 export default SmallMapView;
