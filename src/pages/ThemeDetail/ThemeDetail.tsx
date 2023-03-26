@@ -10,6 +10,7 @@ import styles from "./ThemeDetail.module.scss";
 import Modal from "../../components/Modal";
 import SearchAddress from "./components/SearchAddress";
 import { useState } from "react";
+import SmallMapView from "./SmallMap";
 
 const cx = classnames.bind(styles);
 
@@ -136,7 +137,10 @@ const ThemeDetail = () => {
         useDim
         onClose={() => setModal(false)}
       >
-        <SearchAddress setPosition={() => {}} setMapCenter={() => {}} />
+        <div className={cx("flex")}>
+          <SearchAddress setPosition={() => {}} setMapCenter={() => {}} />
+          <SmallMapView width="40%" height="500px" markerList={[]} />
+        </div>
       </Modal>
     </div>
   );
