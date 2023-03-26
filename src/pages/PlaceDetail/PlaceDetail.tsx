@@ -3,6 +3,8 @@ import Header from "../../components/Header";
 import { Place } from "../../common/types";
 import MapView from "./Map.view";
 import Detail from "../../components/Detail";
+import { useState } from "react";
+import Information from "../../components/Information";
 
 import classnames from "classnames/bind";
 import styles from "./PlaceDetail.module.scss";
@@ -46,12 +48,16 @@ const place: Place = {
 
 const PlaceDetail = () => {
   const { placeId } = useParams();
+  const [showModal, setModal] = useState<boolean>(false);
 
   return (
     <div className={cx("container")}>
       <Header />
       <MapView marker={place} />
-      <Detail {...place} />
+      <Detail {...place} onClick={() => setModal(true)} />
+      {showModal && (
+        <Information place={place} onClose={() => setModal(false)} useDim />
+      )}
     </div>
   );
 };

@@ -4,10 +4,11 @@ import { Place } from "../../common/types";
 import MapView from "./Map.view";
 import List from "../../components/List";
 import { BsHeartFill, BsHeart } from "react-icons/bs";
+import { useState } from "react";
+import Information from "../../components/Information";
 
 import classnames from "classnames/bind";
 import styles from "./CourseDetail.module.scss";
-import { useState } from "react";
 
 const cx = classnames.bind(styles);
 
@@ -91,6 +92,7 @@ const res: ResPlace[] = [
 const CourseDetail = () => {
   const { themeId } = useParams();
   const [liked, setLiked] = useState<boolean>(false);
+  const [selected, setSelected] = useState<Place | null>(null);
   const markerList = res.map(
     ({
       id,
@@ -134,7 +136,20 @@ const CourseDetail = () => {
       />
       <MapView markerList={markerList} />
       <div className={cx("owner")}>made by KOCKOC</div>
-      <List className={cx("list")} placeList={res} onClickItem={(id) => {}} />
+      <List
+        className={cx("list")}
+        placeList={res}
+        onClickItem={(id) => {
+          setSelected(markerList.filter((marker) => marker.id === id)[0]);
+        }}
+      />
+      {selected && (
+        <Information
+          place={selected}
+          onClose={() => setSelected(null)}
+          useDim
+        />
+      )}
     </div>
   );
 };
