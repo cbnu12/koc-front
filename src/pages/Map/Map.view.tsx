@@ -45,44 +45,62 @@ const MapView = ({
   useEffect(() => {
     if (mapRef.current) {
       mapRef.current.innerHTML = "";
-      
-      const options = {
-        center: new kakao.maps.LatLng(lat, lng),
-        level,
-      };
-      const map = new kakao.maps.Map(mapRef.current, options);
 
-      const markerPoint = new kakao.maps.Marker({
-        position: map.getCenter(),
-        clickable: true,
-      });
+      const setting = (currentPosition: any) => {
+        const options = {
+          center: currentPosition ?? new kakao.maps.LatLng(lat, lng),
+          level,
+        };
+        const map = new kakao.maps.Map(mapRef.current, options);
 
-      if (markerList.length > 0) {
-        markerList.forEach((marker) => {
-          const markerElement = document.createElement("div");
-
-          markerElement.className = "marker";
-          markerElement.innerHTML = marker.place_name;
-          markerElement.onclick = () => {
-            onClickMarker(marker);
-          };
-          const customOverlay = new kakao.maps.CustomOverlay({
-            position: new kakao.maps.LatLng(marker.y, marker.x),
-            content: markerElement,
-            yAnchor: 0,
-            clickable: true,
-          });
-
-          customOverlay.setMap(map);
+        const markerPoint = new kakao.maps.Marker({
+          position: map.getCenter(),
+          clickable: true,
         });
-      } else {
-        markerPoint.setMap(map);
-      }
 
-      kakao.maps.event.addListener(map, "click", (e: any) => {
-        var latlng = e.latLng;
-        markerPoint.setPosition(latlng);
-      });
+        if (markerList.length > 0) {
+          markerList.forEach((marker) => {
+            const markerElement = document.createElement("div");
+
+            markerElement.className = "marker";
+            markerElement.innerHTML = marker.place_name;
+            markerElement.onclick = () => {
+              onClickMarker(marker);
+            };
+            const customOverlay = new kakao.maps.CustomOverlay({
+              position: new kakao.maps.LatLng(marker.y, marker.x),
+              content: markerElement,
+              yAnchor: 0,
+              clickable: true,
+            });
+
+            customOverlay.setMap(map);
+          });
+        } else {
+          markerPoint.setMap(map);
+        }
+
+        kakao.maps.event.addListener(map, "click", (e: any) => {
+          var latlng = e.latLng;
+          markerPoint.setPosition(latlng);
+        });
+      };
+
+      if (navigator.geolocation) {
+        let currentPosition;
+
+        navigator.geolocation.getCurrentPosition(function (position) {
+          console.log(position);
+          const lat = position.coords.latitude; // 위도
+          const lon = position.coords.longitude; // 경도
+
+          currentPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+
+          console.log("test", currentPosition);
+
+          setting(currentPosition);
+        });
+      }
     }
   }, [markerList]);
 

@@ -10,6 +10,7 @@ const cx = classnames.bind(styles);
 
 type Props = {
   className?: string;
+  onClick?: () => void;
 };
 
 const Detail = ({
@@ -20,9 +21,10 @@ const Detail = ({
   address_name,
   phone,
   className,
+  onClick,
 }: Props & Place) => {
   return (
-    <div className={cx("container", className)}>
+    <div className={cx("container", className)} onClick={onClick}>
       <div className={cx("title")}>
         <div className={cx("titleSection")}>
           <div className={cx("name")}>{place_name}</div>
