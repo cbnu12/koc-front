@@ -49,7 +49,7 @@ const SmallMapView = ({
         clickable: true,
       });
 
-      if (markerList) {
+      if (markerList.length > 0) {
         let bounds = new kakao.maps.LatLngBounds();
 
         markerList.forEach((marker) => {
