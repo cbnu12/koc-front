@@ -15,7 +15,7 @@ type Props = {
   markerList: Place[];
 };
 
-const MapView = ({
+const SmallMapView = ({
   lat = 37.402056,
   lng = 127.108212,
   width = "100vw",
@@ -86,7 +86,7 @@ const MapView = ({
     }
   }, []);
 
-  return <div id="map" style={{ width, height }} ref={mapRef} />;
+  return <div id="map" style={{ width, height }} ref={mapRef}></div>;
 };
 
-export default MapView;
+export default SmallMapView;

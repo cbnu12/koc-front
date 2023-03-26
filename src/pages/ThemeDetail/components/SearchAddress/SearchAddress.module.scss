@@ -1,0 +1,51 @@
+.input{   
+  width: calc(100% - 40px);
+  max-width: none;
+  position: relative;
+  z-index: 1;
+}
+
+.resultSection{
+  margin-top: -20px;
+  max-height: 400px;
+  overflow: auto;
+  overflow-x: hidden;
+  padding: 40px 0 0;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  
+  &::-webkit-scrollbar{
+    display: none;
+  }
+}
+
+.resultItem{
+  border: 1px solid #e7a618;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+
+  .name{
+    font-weight: 900;
+    font-size: 16px;
+    color: #505050;
+  }
+  
+  .address{
+    font-weight: 600;;
+    font-size: 12px;
+    color: #8d8d8d;
+  }
+  
+  &:hover{
+    background-color: #e7a618;
+
+    .name, .address{
+      color: white;
+    }
+  }
+
+}

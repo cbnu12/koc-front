@@ -7,6 +7,10 @@ import { HiPlus } from "react-icons/hi";
 
 import classnames from "classnames/bind";
 import styles from "./ThemeDetail.module.scss";
+import Modal from "../../components/Modal";
+import SearchAddress from "./components/SearchAddress";
+import { useState } from "react";
+import SmallMapView from "./SmallMap";
 
 const cx = classnames.bind(styles);
 
@@ -114,14 +118,30 @@ const ThemeDetail = () => {
       };
     }
   );
+  const [showModal, setModal] = useState<boolean>(false);
+
+  const themeTitle = "테마 이름";
 
   return (
     <div className={cx("container")}>
-      <Header additionalIcons={[<div className={cx("name")}>테마 이름</div>]} />
+      <Header
+        additionalIcons={[<div className={cx("name")}>{themeTitle}</div>]}
+      />
       <MapView markerList={markerList} />
-      <FloatingButton onClick={() => alert("장소 추가")}>
+      <FloatingButton onClick={() => setModal(true)}>
         <HiPlus /> 장소 추가 하기
       </FloatingButton>
+      <Modal
+        isShow={showModal}
+        title={`${themeTitle}에 장소 추가하기`}
+        useDim
+        onClose={() => setModal(false)}
+      >
+        <div className={cx("flex")}>
+          <SearchAddress setPosition={() => {}} setMapCenter={() => {}} />
+          <SmallMapView width="40%" height="500px" markerList={[]} />
+        </div>
+      </Modal>
     </div>
   );
 };
