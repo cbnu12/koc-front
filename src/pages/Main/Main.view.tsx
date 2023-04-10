@@ -6,7 +6,10 @@ import Section from "./components/Section";
 import styles from "./Main.module.scss";
 import classnames from "classnames/bind";
 import Search from "../../components/Search";
-import { useRef, useState } from "react";
+import { Suspense, useRef, useState } from "react";
+import HotPlaceSection from "./components/HotPlaceSection";
+import RecommendPlaceSection from "./components/RecommendPlaceSection";
+import TrendPlaceSection from "./components/TrendPlaceSection";
 
 const cx = classnames.bind(styles);
 
@@ -65,27 +68,15 @@ const MainView = ({}: Props) => {
           </div>
         </button>
       </section>
-      <Section
-        title="요즘 뜨는 장소들"
-        description="사랑받는 장소들을 소개합니다."
-        itemList={HotPlaceList}
-        direction="row"
-        path="/place/detail"
-      />
-      <Section
-        title="추천 테마"
-        description="사랑받는 장소들을 소개합니다."
-        itemList={HotPlaceList}
-        direction="column"
-        path="/theme/detail"
-      />
-      <Section
-        title="인기있는 코스"
-        description="코스 따라 여행해보세요."
-        itemList={HotPlaceList}
-        direction="column"
-        path="/course/detail"
-      />
+      <Suspense fallback={<>LOADING</>}>
+        <HotPlaceSection />
+      </Suspense>
+      <Suspense fallback={<>LOADING</>}>
+        <RecommendPlaceSection />
+      </Suspense>
+      <Suspense fallback={<>LOADING</>}>
+        <TrendPlaceSection />
+      </Suspense>
     </div>
   );
 };
