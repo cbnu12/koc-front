@@ -87,5 +87,6 @@
     "webpack": "^5.75.0"
   },
   "packageManager": "yarn@3.3.1",
-  "homepage": "https://cbnu12.github.io/koc-front/"
+  "homepage": "https://cbnu12.github.io/koc-front/",
+  "proxy": "http://121.167.132.221:9090"
 }
