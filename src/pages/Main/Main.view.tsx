@@ -1,15 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import { BiSearchAlt } from "react-icons/bi";
 import { RiRoadMapFill } from "react-icons/ri";
-import Section from "./components/Section";
-
-import styles from "./Main.module.scss";
-import classnames from "classnames/bind";
 import Search from "../../components/Search";
 import { Suspense, useRef, useState } from "react";
 import HotPlaceSection from "./components/HotPlaceSection";
 import RecommendPlaceSection from "./components/RecommendPlaceSection";
 import TrendPlaceSection from "./components/TrendPlaceSection";
+import { ErrorBoundary } from "react-error-boundary";
+
+import styles from "./Main.module.scss";
+import classnames from "classnames/bind";
 
 const cx = classnames.bind(styles);
 
@@ -68,15 +67,24 @@ const MainView = ({}: Props) => {
           </div>
         </button>
       </section>
-      <Suspense fallback={<>LOADING</>}>
-        <HotPlaceSection />
-      </Suspense>
-      <Suspense fallback={<>LOADING</>}>
-        <RecommendPlaceSection />
-      </Suspense>
-      <Suspense fallback={<>LOADING</>}>
-        <TrendPlaceSection />
-      </Suspense>
+
+      <ErrorBoundary FallbackComponent={() => <>에러가 발생하였습니다.</>}>
+        <Suspense fallback={<>LOADING</>}>
+          <HotPlaceSection />
+        </Suspense>
+      </ErrorBoundary>
+
+      <ErrorBoundary FallbackComponent={() => <>에러가 발생하였습니다.</>}>
+        <Suspense fallback={<>LOADING</>}>
+          <RecommendPlaceSection />
+        </Suspense>
+      </ErrorBoundary>
+
+      <ErrorBoundary FallbackComponent={() => <>에러가 발생하였습니다.</>}>
+        <Suspense fallback={<>LOADING</>}>
+          <TrendPlaceSection />
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 };
