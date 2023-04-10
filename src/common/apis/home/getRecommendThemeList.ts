@@ -2,7 +2,7 @@ import axios from "axios";
 import { resultData } from "../../../configs/axios/helpers";
 import apiUrls from "../urls";
 
-export type GetRecommendListResponse = {
+export type GetRecommendThemeListResponse = {
   content: {
     name: string;
     placesCount: number;
@@ -25,7 +25,7 @@ export type GetRecommendListResponse = {
 };
 
 export const getRecommendThemeList = () => {
-  return resultData<GetRecommendListResponse>(
+  return resultData<GetRecommendThemeListResponse>(
     axios.get(apiUrls.home.getRecommendThemeList())
   );
 };
