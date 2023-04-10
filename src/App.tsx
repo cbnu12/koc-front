@@ -8,10 +8,12 @@ import NotFound from "./pages/NotFound";
 import PlaceDetail from "./pages/PlaceDetail";
 import ThemeDetail from "./pages/ThemeDetail";
 import CourseDetail from "./pages/CourseDetail";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { getGlobalQueryClient } from "./configs/query";
 
 function App() {
   return (
-    <div className="App">
+    <QueryClientProvider client={getGlobalQueryClient()}>
       <Routes>
         <Route path={PageRouts.main} element={<Main />} />
         <Route path={PageRouts.map} element={<Map />} />
@@ -20,7 +22,7 @@ function App() {
         <Route path={PageRouts.courseDetail} element={<CourseDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </div>
+    </QueryClientProvider>
   );
 }
 
