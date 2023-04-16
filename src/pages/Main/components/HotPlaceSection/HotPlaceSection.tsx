@@ -1,3 +1,4 @@
+import { covertEmoji } from "../../../../common/helpers/emoji";
 import useGetHotCourseListQuery from "../../../../common/query/home/useGetHotCourseListQuery";
 import Section from "../Section";
 
@@ -14,7 +15,7 @@ const HotPlaceSection = () => {
             name,
             address: `${placeCount}개의 장소`,
             characters: [],
-            recommend: emoji,
+            recommend: <p>{covertEmoji(emoji)}</p>,
           }))}
           direction="row"
           path="/place/detail"
