@@ -37,7 +37,7 @@ const responseOnFullFilled = async (
   response: AxiosResponse
 ): Promise<AxiosResponse> => {
   // TODO: 토큰 새로 발급이 필요한 경우 처리 로직 케이스 추가
-  if (response.data.result === "SUCCESS") {
+  if (response.status === 200) {
     console.log("API SUCCESS", response);
     return { ...response, data: response.data };
   } else {

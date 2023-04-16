@@ -1,4 +1,5 @@
-const BASE_URL = "http://121.167.132.221:9090";
+// const BASE_URL = "http://121.167.132.221:9090";
+const BASE_URL = "";
 
 const apiUrls = {
   home: {
