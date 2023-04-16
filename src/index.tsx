@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 import initAxios from "./configs/axios";
 
+console.log("process env", process.env);
+
 initAxios();
 
 const root = ReactDOM.createRoot(

@@ -22,7 +22,7 @@
   "scripts": {
     "start": "cross-env REACT_APP_API_URL= react-scripts start",
     "build": "cross-env REACT_APP_API_URL=http://121.167.132.221:9090 react-scripts build",
-    "build:github": "cross-env REACT_APP_BASE_NAME=/koc-front react-scripts build",
+    "build:github": "cross-env REACT_APP_BASE_NAME=/koc-front REACT_APP_API_URL=http://121.167.132.221:9090 react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
