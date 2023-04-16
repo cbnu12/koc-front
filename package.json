@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "env-cmd -f .env.production react-scripts build",
     "build:github": "cross-env REACT_APP_BASE_NAME=/koc-front react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
