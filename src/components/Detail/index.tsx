@@ -31,7 +31,15 @@ const Detail = ({
           <div className={cx("category")}>{category_name}</div>
         </div>
         {place_url && (
-          <a className={cx("url")} href={place_url} target="_blank">
+          <a
+            className={cx("url")}
+            href={place_url}
+            target="_blank"
+            onClick={(e) => {
+              console.log("wjrld");
+              e.stopPropagation();
+            }}
+          >
             <FiExternalLink size={22} />
           </a>
         )}

@@ -12,27 +12,6 @@ import classnames from "classnames/bind";
 
 const cx = classnames.bind(styles);
 
-const HotPlaceList = [
-  {
-    name: "장소명1",
-    address: "장소 어쩌구",
-    characters: ["장소 특징1", "장소 특징2", "장소 특징3"],
-    recommend: "많은 사람들이 저장했어요.",
-  },
-  {
-    name: "장소명2",
-    address: "장소 어쩌구",
-    characters: ["장소 특징1", "장소 특징2", "장소 특징3"],
-    recommend: "많은 사람들이 추천했어요.",
-  },
-  {
-    name: "장소명3",
-    address: "장소 어쩌구",
-    characters: ["장소 특징1", "장소 특징2", "장소 특징3"],
-    recommend: "많은 사람들이 클릭했어요.",
-  },
-];
-
 type Props = {};
 
 const MainView = ({}: Props) => {
