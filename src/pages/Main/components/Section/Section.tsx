@@ -11,7 +11,7 @@ type Props = {
     name: string;
     address: string;
     characters: string[];
-    recommend: string;
+    recommend: React.ReactNode;
   }[];
   direction: "row" | "column";
   path: string;
