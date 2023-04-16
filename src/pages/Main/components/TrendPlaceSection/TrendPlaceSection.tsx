@@ -1,8 +1,8 @@
-import getTrendPlaceListQuery from "../../../../common/query/home/getTrendPlaceListQuery";
+import useGetTrendPlaceListQuery from "../../../../common/query/home/useGetTrendPlaceListQuery";
 import Section from "../Section";
 
 const TrendPlaceSection = () => {
-  const { data } = getTrendPlaceListQuery();
+  const { data } = useGetTrendPlaceListQuery();
 
   return (
     <>

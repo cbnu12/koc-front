@@ -1,8 +1,8 @@
-import getRecommendThemeListQuery from "../../../../common/query/home/getRecommendThemeListQuery";
+import useGetRecommendThemeListQuery from "../../../../common/query/home/useGetRecommendThemeListQuery";
 import Section from "../Section";
 
 const RecommendPlaceSection = () => {
-  const { data } = getRecommendThemeListQuery();
+  const { data } = useGetRecommendThemeListQuery();
 
   return (
     <>

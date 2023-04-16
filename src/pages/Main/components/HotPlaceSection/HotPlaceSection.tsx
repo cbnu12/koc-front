@@ -1,8 +1,8 @@
-import getHotCourseListQuery from "../../../../common/query/home/getHotCourseListQuery";
+import useGetHotCourseListQuery from "../../../../common/query/home/useGetHotCourseListQuery";
 import Section from "../Section";
 
 const HotPlaceSection = () => {
-  const { data } = getHotCourseListQuery();
+  const { data } = useGetHotCourseListQuery();
 
   return (
     <>

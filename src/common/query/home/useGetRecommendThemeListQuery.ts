@@ -4,7 +4,7 @@ import {
   getRecommendThemeList,
 } from "../../apis/home";
 
-const getRecommendThemeListQuery = (
+const useGetRecommendThemeListQuery = (
   options?: Omit<UseQueryOptions<GetRecommendThemeListResponse>, "">
 ) => {
   return useQuery(
@@ -14,4 +14,4 @@ const getRecommendThemeListQuery = (
   );
 };
 
-export default getRecommendThemeListQuery;
+export default useGetRecommendThemeListQuery;
