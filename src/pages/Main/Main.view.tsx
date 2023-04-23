@@ -6,6 +6,8 @@ import HotPlaceSection from "./components/HotPlaceSection";
 import RecommendPlaceSection from "./components/RecommendPlaceSection";
 import TrendPlaceSection from "./components/TrendPlaceSection";
 import { ErrorBoundary } from "react-error-boundary";
+import Loading from "../../components/Loading";
+import Error from "../../components/Error";
 
 import styles from "./Main.module.scss";
 import classnames from "classnames/bind";
@@ -47,20 +49,20 @@ const MainView = ({}: Props) => {
         </button>
       </section>
 
-      <ErrorBoundary FallbackComponent={() => <>에러가 발생하였습니다.</>}>
-        <Suspense fallback={<>LOADING</>}>
+      <ErrorBoundary FallbackComponent={() => <Error />}>
+        <Suspense fallback={<Loading />}>
           <HotPlaceSection />
         </Suspense>
       </ErrorBoundary>
 
-      <ErrorBoundary FallbackComponent={() => <>에러가 발생하였습니다.</>}>
-        <Suspense fallback={<>LOADING</>}>
+      <ErrorBoundary FallbackComponent={() => <Error />}>
+        <Suspense fallback={<Loading />}>
           <RecommendPlaceSection />
         </Suspense>
       </ErrorBoundary>
 
-      <ErrorBoundary FallbackComponent={() => <>에러가 발생하였습니다.</>}>
-        <Suspense fallback={<>LOADING</>}>
+      <ErrorBoundary FallbackComponent={() => <Error />}>
+        <Suspense fallback={<Loading />}>
           <TrendPlaceSection />
         </Suspense>
       </ErrorBoundary>

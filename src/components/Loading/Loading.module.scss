@@ -1,0 +1,27 @@
+.container{
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  width: 100%;
+
+  & > div{
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 3px 3px 8px rgba(27, 27, 27, 0.4);
+  }
+}
+
+.title{
+  height: 20px;
+  width: 100px;
+}
+
+.subTitle{
+  height: 20px;
+  width: 150px;
+}
+
+.content{
+  height: 100px;
+  width: 100%;
+}
