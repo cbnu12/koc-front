@@ -28,7 +28,7 @@ export type GetSearchCourseResponse = {
   }[];
 };
 
-type GetSearchCourseQueries = {
+export type GetSearchCourseQueries = {
   keyword: string;
 };
 

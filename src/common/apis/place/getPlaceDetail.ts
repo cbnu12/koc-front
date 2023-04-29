@@ -11,7 +11,7 @@ export type GetPlaceDetailResponse = {
   longitude: string;
 };
 
-type GetPlaceDetailQueries = {
+export type GetPlaceDetailQueries = {
   id: string;
 };
 

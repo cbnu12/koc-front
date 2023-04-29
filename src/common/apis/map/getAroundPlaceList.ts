@@ -27,7 +27,7 @@ export type GetAroundPlaceListResponse = {
   empty: boolean;
 };
 
-type GetAroundPlacelistQueries = {
+export type GetAroundPlacelistQueries = {
   latitude: string;
   longitude: string;
 };

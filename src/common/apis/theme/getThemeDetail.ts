@@ -26,7 +26,7 @@ export type GetThemeDetailResponse = {
   empty: boolean;
 };
 
-type GetThemeDetailQueries = {
+export type GetThemeDetailQueries = {
   keyword: string;
 };
 

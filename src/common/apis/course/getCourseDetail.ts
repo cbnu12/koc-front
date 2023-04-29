@@ -16,11 +16,11 @@ export type GetCourseDetailResponse = {
   emoji: string;
 };
 
-type GetCoureseDetailQueries = {
+export type GetCourseDetailQueries = {
   id: string;
 };
 
-export const getCourseDetail = ({ id }: GetCoureseDetailQueries) => {
+export const getCourseDetail = ({ id }: GetCourseDetailQueries) => {
   return resultData<GetCourseDetailResponse>(
     axios.get(apiUrls.course.getCourseDetail(id))
   );
