@@ -4,6 +4,7 @@ import apiUrls from "../urls";
 
 export type GetTrendPlaceListResponse = {
   content: {
+    id: number;
     name: string;
     address: string;
     descriptions: string[];

@@ -11,7 +11,8 @@ const HotPlaceSection = () => {
         <Section
           title="요즘 뜨는 장소들"
           description="사랑받는 장소들을 소개합니다."
-          itemList={data.content.map(({ name, placeCount, emoji }) => ({
+          itemList={data.content.map(({ id, name, placeCount, emoji }) => ({
+            id,
             name,
             address: `${placeCount}개의 장소`,
             characters: [],

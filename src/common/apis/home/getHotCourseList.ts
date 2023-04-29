@@ -4,6 +4,7 @@ import apiUrls from "../urls";
 
 export type GetHotCourseListResponse = {
   content: {
+    id: number;
     name: string;
     createdBy: {
       id: number;

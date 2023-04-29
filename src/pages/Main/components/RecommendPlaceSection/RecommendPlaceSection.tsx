@@ -10,7 +10,8 @@ const RecommendPlaceSection = () => {
         <Section
           title="추천 테마"
           description="사랑받는 장소들을 소개합니다."
-          itemList={data.content.map(({ name, placesCount, emoji }) => ({
+          itemList={data.content.map(({ id, name, placesCount, emoji }) => ({
+            id,
             name,
             address: emoji,
             characters: [],

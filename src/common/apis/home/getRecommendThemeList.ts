@@ -4,6 +4,7 @@ import apiUrls from "../urls";
 
 export type GetRecommendThemeListResponse = {
   content: {
+    id: number;
     name: string;
     placesCount: number;
     emoji: string;

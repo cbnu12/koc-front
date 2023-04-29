@@ -8,6 +8,7 @@ type Props = {
   title: string;
   description: string;
   itemList: {
+    id: number;
     name: string;
     address: string;
     characters: string[];
@@ -25,11 +26,11 @@ const Section = ({ title, description, itemList, direction, path }: Props) => {
       <div className={cx("title")}>{title}</div>
       <div className={cx("description")}>{description}</div>
       <div className={cx("boxContainer", direction)}>
-        {itemList.map(({ name, address, characters, recommend }) => (
+        {itemList.map(({ id, name, address, characters, recommend }) => (
           <div
             key={name}
             className={cx("box", direction)}
-            onClick={() => navigate(`${path}/id`)}
+            onClick={() => navigate(`${path}/${id}`)}
           >
             <div className={cx("name")}>{name}</div>
             <div className={cx("address")}>{address}</div>

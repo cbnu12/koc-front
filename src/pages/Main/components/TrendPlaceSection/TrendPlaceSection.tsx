@@ -11,7 +11,8 @@ const TrendPlaceSection = () => {
           title="인기있는 코스"
           description="코스 따라 여행해보세요."
           itemList={data.content.map(
-            ({ name, address, descriptions, category }) => ({
+            ({ id, name, address, descriptions, category }) => ({
+              id,
               name,
               address,
               characters: descriptions,
