@@ -28,7 +28,9 @@ const Detail = ({
       <div className={cx("title")}>
         <div className={cx("titleSection")}>
           <div className={cx("name")}>{place_name}</div>
-          <div className={cx("category")}>{category_name}</div>
+          {category_name && (
+            <div className={cx("category")}>{category_name}</div>
+          )}
         </div>
         {place_url && (
           <a
@@ -36,7 +38,6 @@ const Detail = ({
             href={place_url}
             target="_blank"
             onClick={(e) => {
-              console.log("wjrld");
               e.stopPropagation();
             }}
           >
