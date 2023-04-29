@@ -1,11 +1,23 @@
+const BASE_URL = process.env.REACT_APP_API_URL ?? "";
+
 const apiUrls = {
   home: {
-    getHotCourseList: () =>
-      `${process.env.REACT_APP_API_URL || ""}/home/hot-courses`,
-    getRecommendThemeList: () =>
-      `${process.env.REACT_APP_API_URL || ""}/home/recommend-themes`,
-    getTrendPlaceList: () =>
-      `${process.env.REACT_APP_API_URL || ""}/home/trend-places`,
+    getHotCourseList: () => `$BASE_URL}/home/hot-courses`,
+    getRecommendThemeList: () => `$BASE_URL}/home/recommend-themes`,
+    getTrendPlaceList: () => `${BASE_URL}/home/trend-places`,
+  },
+  place: {
+    getPlaceDetail: (id: string) => `${BASE_URL}/place/${id}`,
+  },
+  map: {
+    getAroundPlaceList: () => `${BASE_URL}/map`,
+  },
+  course: {
+    getCourseDetail: (id: string) => `${BASE_URL}/course/${id}`,
+    getSearchCourse: () => `${BASE_URL}/course/search}`,
+  },
+  theme: {
+    getThemeDetail: () => `${BASE_URL}/theme`,
   },
 };
 
