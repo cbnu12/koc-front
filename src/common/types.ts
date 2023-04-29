@@ -1,7 +1,7 @@
 export type Place = {
+  id: string;
   address_name: string;
   category_name: string;
-  id: string;
   phone: string;
   place_name: string;
   place_url: string;
