@@ -8,6 +8,7 @@ import Information from "../../components/Information";
 
 import classnames from "classnames/bind";
 import styles from "./PlaceDetail.module.scss";
+import usePlaceDetailQuery from "../../common/query/place/usePlaceDetailQuery";
 
 const cx = classnames.bind(styles);
 
@@ -22,41 +23,63 @@ const place: Place = {
   x: "127.1104335101161",
   y: "37.39570088983171",
 };
-//   {
-//     address_name: "경기 성남시 분당구 백현동 532",
-//     category_name: "가정,생활 > 문구,사무용품 > 디자인문구 > 카카오프렌즈",
-//     id: "143299114",
-//     phone: "031-601-7225",
-//     place_name: "카카오프렌즈 판교아지트점",
-//     place_url: "http://place.map.kakao.com/143299114",
-//     road_address_name: "경기 성남시 분당구 판교역로 166",
-//     x: "127.11011277516864",
-//     y: "37.395696683829094",
-//   },
-//   {
-//     address_name: "경기 성남시 분당구 백현동 532",
-//     category_name: "부동산 > 빌딩",
-//     id: "1437795442",
-//     phone: "",
-//     place_name: "카카오판교아지트",
-//     place_url: "http://place.map.kakao.com/1437795442",
-//     road_address_name: "경기 성남시 분당구 판교역로 166",
-//     x: "127.11036420512991",
-//     y: "37.39541713271851",
-//   },
-// ];
 
 const PlaceDetail = () => {
   const { placeId } = useParams();
   const [showModal, setModal] = useState<boolean>(false);
 
+  const { data } = usePlaceDetailQuery({ id: placeId! });
+
+  if (!data) {
+    return <>Loading...</>;
+  }
+
   return (
     <div className={cx("container")}>
       <Header />
-      <MapView marker={place} />
-      <Detail {...place} onClick={() => setModal(true)} />
+      <MapView
+        marker={{
+          address_name: data.address,
+          category_name: data.category,
+          id: String(data.id),
+          phone: data.tel,
+          place_name: data.name,
+          place_url: `http://place.map.kakao.com/${data.id}`,
+          road_address_name: data.address,
+          x: data.latitude,
+          y: data.longitude,
+        }}
+      />
+      <Detail
+        {...{
+          address_name: data.address,
+          category_name: data.category,
+          id: String(data.id),
+          phone: data.tel,
+          place_name: data.name,
+          place_url: `http://place.map.kakao.com/${data.id}`,
+          road_address_name: data.address,
+          x: data.latitude,
+          y: data.longitude,
+        }}
+        onClick={() => setModal(true)}
+      />
       {showModal && (
-        <Information place={place} onClose={() => setModal(false)} useDim />
+        <Information
+          place={{
+            address_name: data.address,
+            category_name: data.category,
+            id: String(data.id),
+            phone: data.tel,
+            place_name: data.name,
+            place_url: `http://place.map.kakao.com/${data.id}`,
+            road_address_name: data.address,
+            x: data.latitude,
+            y: data.longitude,
+          }}
+          onClose={() => setModal(false)}
+          useDim
+        />
       )}
     </div>
   );

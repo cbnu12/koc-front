@@ -6,6 +6,8 @@ export type GetPlaceDetailResponse = {
   id: number;
   name: string;
   address: string;
+  tel: string;
+  category: string;
   description: string[];
   latitude: string;
   longitude: string;
