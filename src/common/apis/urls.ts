@@ -2,8 +2,8 @@ const BASE_URL = process.env.REACT_APP_API_URL ?? "";
 
 const apiUrls = {
   home: {
-    getHotCourseList: () => `$BASE_URL}/home/hot-courses`,
-    getRecommendThemeList: () => `$BASE_URL}/home/recommend-themes`,
+    getHotCourseList: () => `${BASE_URL}/home/hot-courses`,
+    getRecommendThemeList: () => `${BASE_URL}/home/recommend-themes`,
     getTrendPlaceList: () => `${BASE_URL}/home/trend-places`,
   },
   place: {
