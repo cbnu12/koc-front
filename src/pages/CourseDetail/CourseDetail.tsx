@@ -30,8 +30,8 @@ const CourseDetail = () => {
         place_name: name,
         place_url: `http://place.map.kakao.com/${id}`,
         road_address_name: "",
-        x: latitude,
-        y: longitude,
+        x: longitude,
+        y: latitude,
       };
     }) ?? [];
 
