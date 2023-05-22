@@ -46,8 +46,8 @@ const PlaceDetail = () => {
           place_name: data.name,
           place_url: `http://place.map.kakao.com/${data.id}`,
           road_address_name: data.address,
-          x: data.latitude,
-          y: data.longitude,
+          x: data.longitude,
+          y: data.latitude,
         }}
       />
       <Detail
