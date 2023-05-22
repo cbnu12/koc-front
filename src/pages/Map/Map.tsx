@@ -10,6 +10,7 @@ import Header from "../../components/Header";
 import styles from "./Map.module.scss";
 import classnames from "classnames/bind";
 import "./marker.css";
+import useAroundPlaceListQuery from "../../common/query/map/useAroundPlaceListQuery";
 
 const cx = classnames.bind(styles);
 
@@ -17,9 +18,26 @@ const Map = () => {
   const { search } = useLocation();
   const { keyword } = queryString.parse(search);
 
-  const [mapCenter, setMapCenter] = useState<{ lat: number; lng: number }>();
+  const [mapCenter, setMapCenter] = useState<{ lat: number; lng: number }>({
+    lat: 37.402056,
+    lng: 127.108212,
+  });
   const [markerList, setMarkerList] = useState<Place[]>([]);
   const [showSearch, setShowSearch] = useState<boolean>(!!keyword);
+
+  const { data } = useAroundPlaceListQuery(
+    {
+      latitude: String(mapCenter.lat),
+      longitude: String(mapCenter.lng),
+    },
+    {
+      onSuccess: ({ pages }) => {
+        if (pages[0].content.length > 0) {
+          setShowSearch(true);
+        }
+      },
+    }
+  );
 
   return (
     <>
@@ -39,7 +57,11 @@ const Map = () => {
           queryKeyword={keyword as string}
         />
       )}
-      <MapView {...mapCenter} markerList={markerList} />
+      <MapView
+        {...mapCenter}
+        markerList={markerList}
+        setMapCenter={setMapCenter}
+      />
     </>
   );
 };

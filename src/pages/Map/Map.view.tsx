@@ -21,6 +21,7 @@ type Props = {
   height?: string;
   level?: number;
   markerList: Place[];
+  setMapCenter: (center: { lat: number; lng: number }) => void;
 };
 
 const MapView = ({
@@ -30,6 +31,7 @@ const MapView = ({
   height = "100vh",
   level = 3,
   markerList,
+  setMapCenter,
 }: Props) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const [detail, setDetail] = useState<Place | null>(null);
@@ -90,14 +92,12 @@ const MapView = ({
         let currentPosition;
 
         navigator.geolocation.getCurrentPosition(function (position) {
-          console.log(position);
           const lat = position.coords.latitude; // 위도
-          const lon = position.coords.longitude; // 경도
+          const lng = position.coords.longitude; // 경도
 
-          currentPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+          currentPosition = new kakao.maps.LatLng(lat, lng); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
 
-          console.log("test", currentPosition);
-
+          setMapCenter({ lat, lng });
           setting(currentPosition);
         });
       }
