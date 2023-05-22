@@ -11,6 +11,7 @@ import Modal from "../../components/Modal";
 import SearchAddress from "./components/SearchAddress";
 import { useState } from "react";
 import SmallMapView from "./SmallMap";
+import useThemeDetailQuery from "../../common/query/theme/useThemeDetailQuery";
 
 const cx = classnames.bind(styles);
 
@@ -93,6 +94,7 @@ const res: ResPlace[] = [
 
 const ThemeDetail = () => {
   const { themeId } = useParams();
+  const {} = useThemeDetailQuery({ keyword: "" });
   const markerList = res.map(
     ({
       id,

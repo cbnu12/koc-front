@@ -20,6 +20,14 @@
   transform: translate(-50%, -50%);
   padding: 40px;
   display: relative;
+
+  &.large{
+    width: 640px;
+  }
+
+  &.small{
+    width: 270px;
+  }
 }
 
 .closeButton{

@@ -20,5 +20,19 @@
 }
 
 .loginModal{
-  
+  word-break: keep-all; 
+  text-align: center;
+  line-height: 180%;
+  font-weight: bold;
+  color: #505050;
+}
+
+.kakaoButton{
+  background-color: rgb(254, 229, 0);
+  border: none;
+  width: 100%;
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  font-weight: bold;
 }

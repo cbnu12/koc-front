@@ -22,11 +22,11 @@ const MainHeader = () => {
         isShow={showLoginModal}
         useDim
         onClose={() => setLoginModal(false)}
+        size="small"
       >
         <div className={cx("loginModal")}>
-          TODO: 디자인 로그인하고 모든 기능을 이용해보세요. 필요한 시간은 단,
-          3초!
-          <button>카카오톡으로 로그인하기</button>
+          {`로그인하고 모든 기능을 이용해보세요.\n필요한 시간은 단, 3초!`}
+          <button className={cx("kakaoButton")}>카카오톡으로 로그인하기</button>
         </div>
       </Modal>
     </>

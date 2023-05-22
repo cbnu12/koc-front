@@ -9,6 +9,7 @@ type Props = {
   useDim?: boolean;
   children?: React.ReactNode;
   onClose?: () => void;
+  size?: "large" | "small";
 };
 
 const Modal = ({
@@ -18,6 +19,7 @@ const Modal = ({
   title,
   description,
   children,
+  size = "large",
 }: Props) => {
   if (!isShow) {
     return <></>;
@@ -26,10 +28,10 @@ const Modal = ({
   return (
     <>
       {useDim && <div className={cx("dim")} />}
-      <div className={cx("container")}>
+      <div className={cx("container", size)}>
         {onClose && (
           <button onClick={onClose} type="button" className={cx("closeButton")}>
-            닫기
+            ✖️
           </button>
         )}
         {title && <div className={cx("title")}>{title}</div>}
