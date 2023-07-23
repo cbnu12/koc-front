@@ -4,4 +4,5 @@ export const PageRouts = {
   placeDetail: "/place/detail/:placeId",
   themeDetail: "/theme/detail/:themeId",
   courseDetail: "/course/detail/:themeId",
+  auth: "/auth",
 };

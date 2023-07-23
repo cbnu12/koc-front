@@ -10,6 +10,7 @@ import ThemeDetail from "./pages/ThemeDetail";
 import CourseDetail from "./pages/CourseDetail";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { getGlobalQueryClient } from "./configs/query";
+import Auth from "./pages/Auth/Auth";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path={PageRouts.themeDetail} element={<ThemeDetail />} />
         <Route path={PageRouts.placeDetail} element={<PlaceDetail />} />
         <Route path={PageRouts.courseDetail} element={<CourseDetail />} />
+        <Route path={PageRouts.auth} element={<Auth />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </QueryClientProvider>
