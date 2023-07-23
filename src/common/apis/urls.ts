@@ -19,6 +19,10 @@ const apiUrls = {
   theme: {
     getThemeDetail: () => `${BASE_URL}/theme`,
   },
+  login: {
+    getKakaoLoginUrl: () => `${BASE_URL}/auth/kakao-login-url`,
+    getKakaoToken: () => `${BASE_URL}/auth/token`,
+  },
 };
 
 export default apiUrls;

@@ -21,8 +21,8 @@
   },
   "scripts": {
     "start": "cross-env REACT_APP_API_URL= react-scripts start",
-    "build": "cross-env REACT_APP_API_URL=http://121.167.132.221:9090 react-scripts build",
-    "build:github": "cross-env REACT_APP_BASE_NAME=/koc-front REACT_APP_API_URL=http://121.167.132.221:9090 react-scripts build",
+    "build": "cross-env REACT_APP_API_URL=http://211.208.125.180:9090 react-scripts build",
+    "build:github": "cross-env REACT_APP_BASE_NAME=/koc-front REACT_APP_API_URL=http://211.208.125.180:9090 react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
@@ -90,5 +90,5 @@
   },
   "packageManager": "yarn@3.3.1",
   "homepage": "https://cbnu12.github.io/koc-front/",
-  "proxy": "http://121.167.132.221:9090"
+  "proxy": "http://211.208.125.180:9090"
 }
